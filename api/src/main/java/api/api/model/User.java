@@ -3,113 +3,113 @@ package api.api.model;
 import java.time.LocalDate;
 
 public class User {
-    private int UserId;
-    private String Email;
-    private String Password;
-    private String Name;
-    private String SecondName;
-    private String Surname;
-    private LocalDate DateOfBirth;
-    private int Pesel;
-    private String Birthplace;
-    private String Domicile;
-    private String MothersName;
-    private String FathersName;
+    private int userId;
+    private String email;
+    private String password;
+    private String name;
+    private String secondName;
+    private String surname;
+    private LocalDate dateOfBirth;
+    private int pesel;
+    private String birthplace;
+    private String domicile;
+    private String mothersName;
+    private String fathersName;
 
     public int getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(int userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSecondName() {
-        return SecondName;
+        return secondName;
     }
 
     public void setSecondName(String secondName) {
-        SecondName = secondName;
+        this.secondName = secondName;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
     }
 
     public LocalDate getDateOfBirth() {
-        return DateOfBirth;
+        return dateOfBirth;
     }
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
-        DateOfBirth = dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public int getPesel() {
-        return Pesel;
+        return pesel;
     }
 
     public void setPesel(int pesel) {
-        Pesel = pesel;
+        this.pesel = pesel;
     }
 
     public String getBirthplace() {
-        return Birthplace;
+        return birthplace;
     }
 
     public void setBirthplace(String birthplace) {
-        Birthplace = birthplace;
+        this.birthplace = birthplace;
     }
 
     public String getDomicile() {
-        return Domicile;
+        return domicile;
     }
 
     public void setDomicile(String domicile) {
-        Domicile = domicile;
+        this.domicile = domicile;
     }
 
     public String getMothersName() {
-        return MothersName;
+        return mothersName;
     }
 
     public void setMothersName(String mothersName) {
-        MothersName = mothersName;
+        this.mothersName = mothersName;
     }
 
     public String getFathersName() {
-        return FathersName;
+        return fathersName;
     }
 
     public void setFathersName(String fathersName) {
-        FathersName = fathersName;
+        this.fathersName = fathersName;
     }
 
     public User() {
@@ -118,18 +118,19 @@ public class User {
     public User(int userId, String email, String password, String name, String secondName, String surname,
             LocalDate dateOfBirth, int pesel, String birthplace, String domicile, String mothersName,
             String fathersName) {
-        UserId = userId;
-        Email = email;
-        Password = password;
-        Name = name;
-        SecondName = secondName;
-        Surname = surname;
-        DateOfBirth = dateOfBirth;
-        Pesel = pesel;
-        Birthplace = birthplace;
-        Domicile = domicile;
-        MothersName = mothersName;
-        FathersName = fathersName;
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.secondName = secondName;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.pesel = pesel;
+        this.birthplace = birthplace;
+        this.domicile = domicile;
+        this.mothersName = mothersName;
+        this.fathersName = fathersName;
     }
+
 
 }
