@@ -1,4 +1,4 @@
-package api.api.model;
+package com.api.API.model;
 
 import java.time.LocalDate;
 
@@ -131,6 +131,5 @@ public class User {
         this.mothersName = mothersName;
         this.fathersName = fathersName;
     }
-
 
 }
