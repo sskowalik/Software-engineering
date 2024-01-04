@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
   orzelBialy3: {
     width: 641,
     height: 533,
-    // Uwaga: Dodaj odpowiednie źródło dla obrazu
-    // background: { uri: 'ścieżka/do/orzel_bialy.png' },
+    background: { uri: '../images/orzel_bialy.png' },
     position: 'absolute',
   },
   rectangle14: {
@@ -72,22 +71,19 @@ const styles = StyleSheet.create({
   info2: {
     width: 81,
     height: 81,
-    // Uwaga: Dodaj odpowiednie źródło dla obrazu
-    // background: { uri: 'ścieżka/do/info.png' },
+    background: { uri: '../images/info.png' },
     position: 'absolute',
   },
   coi2: {
     width: 183,
     height: 72,
-    // Uwaga: Dodaj odpowiednie źródło dla obrazu
-    // background: { uri: 'ścieżka/do/COI.png' },
+    background: { uri: '../images/COI.png' },
     position: 'absolute',
   },
   znakUproszczony2: {
     width: 182,
     height: 81,
-    // Uwaga: Dodaj odpowiednie źródło dla obrazu
-    // background: { uri: 'ścieżka/do/05_znak_uproszczony_kolor_biale_tlo' },
+    background: { uri: '../images/ministerstwo_cyfryzacji.png' },
     position: 'absolute',
   },
   wersja01: {
@@ -109,15 +105,13 @@ const styles = StyleSheet.create({
   herbPolski2: {
     width: 49,
     height: 58,
-    // Uwaga: Dodaj odpowiednie źródło dla obrazu
-    // background: { uri: 'ścieżka/do/Herb_Polski' },
+    background: { uri: '../images/herb_Polski.png' },
     position: 'absolute',
   },
   image1: {
     width: 244,
     height: 245,
-    // Uwaga: Dodaj odpowiednie źródło dla obrazu
-    // background: { uri: 'ścieżka/do/image.png' },
+    background: { uri: '../images/image.png' },
     borderWidth: 4,
     borderColor: '#000000',
     position: 'absolute',
