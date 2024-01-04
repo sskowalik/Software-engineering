@@ -129,7 +129,6 @@ export const styles = StyleSheet.create({
 
   /* image 1 */
   image1: {
-    boxSizing: 'border-box',
     position: 'absolute',
     left: '31.52%',
     right: '36.16%',
