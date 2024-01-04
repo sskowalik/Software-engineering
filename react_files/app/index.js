@@ -31,4 +31,4 @@ const Login = () => {
         </View>
     );
 };
-  export default Login;
+export default Login;
