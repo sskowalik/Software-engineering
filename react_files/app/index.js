@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
       right: '4.64%',
       top: '48.75%',
       bottom: '9.61%',
-      background: { uri: 'orzel_bialy.png' },
+      background: { uri: './images/orzel_bialy.png' },
     },
   
     /* Rectangle 14 */
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
       right: '5.3%',
       top: '0.39%',
       bottom: '93.28%',
-      background: { uri: 'info.png' },
+      background: { uri: './images/info.png' },
       backgroundSize: 'cover',
     },
   
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
       right: '72.45%',
       top: '92.42%',
       bottom: '1.95%',
-      background: { uri: '../images/COI.png' },
+      background: { uri: './images/COI.png' },
       backgroundSize: 'cover',
     },
   
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
       right: '47.15%',
       top: '92.03%',
       bottom: '1.64%',
-      background: { uri: '../images/05_znak_uproszczony_kolor_biale_tlo.png' },
+      background: { uri: './images/ministerstwo_cyfryzacji.png' },
       backgroundSize: 'cover',
     },
   
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
       right: '63.71%',
       top: '1.25%',
       bottom: '94.22%',
-      background: { uri: '../images/Herb_Polski.png' },
+      background: { uri: './images/herb_Polski.png' },
       backgroundSize: 'cover',
     },
   
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
       right: '36.16%',
       top: '10.47%',
       bottom: '70.39%',
-      background: { uri: '../images/image.png' },
+      background: { uri: './images/logo.png' },
       backgroundSize: 'cover',
       border: '4px solid #000000',
     },
