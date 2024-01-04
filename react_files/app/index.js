@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { styles } from './style-login';
 const Login = () => {
     return (
         <View style={styles.container}>
                 <View style={styles.maskGroup}>
                 <View style={styles.rectangle13}></View>
-                <Image source={require('react_files\app\images\orzel_bialy.png')} style={styles.orzelBialyImage} />
+                <Image source={require('react_files/app/images/orzel_bialy.png')} style={styles.orzelBialy3} />
                 <View style={styles.rectangle14}></View>
                 <View style={styles.rectangle15}></View>
                 <View style={styles.line3}></View>
@@ -15,7 +15,7 @@ const Login = () => {
                 <View style={styles.znakUproszczony2}></View>
                 <Text style={styles.wersja01}>wersja 0.1</Text>
                 <Text style={styles.urzedasPl}>URZĘDAS.PL</Text>
-                <Image source={require('react_files\app\images\herb_Polski.png')} style={styles.herbPolski2} />
+                <Image source={require('react_files/app/images/herb_Polski.png')} style={styles.herbPolski2} />
                 <View style={styles.image1}></View>
                 <View style={styles.rectangle22}></View>
                 <View style={styles.rectangle23}></View>

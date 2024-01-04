@@ -26,7 +26,8 @@ export const styles = StyleSheet.create({
     right: '4.64%',
     top: '48.75%',
     bottom: '9.61%',
-    background: { uri: 'react_files\app\images\orzel_bialy.png' },
+    //background: { uri: 'react_files\app\images\orzel_bialy.png' },
+    resizeMode: 'contain',
   },
 
   /* Rectangle 14 */
@@ -66,8 +67,8 @@ export const styles = StyleSheet.create({
     right: '5.3%',
     top: '0.39%',
     bottom: '93.28%',
-    background: { uri: 'react_files\app\images\info.png' },
-    backgroundSize: 'cover',
+    //background: { uri: 'react_files\app\images\info.png' },
+    resizeMode: 'contain',
   },
 
   /* COI 2 */
@@ -77,8 +78,8 @@ export const styles = StyleSheet.create({
     right: '72.45%',
     top: '92.42%',
     bottom: '1.95%',
-    background: { uri: 'react_files\app\images\COI.png' },
-    backgroundSize: 'cover',
+    //background: { uri: 'react_files\app\images\COI.png' },
+    resizeMode: 'contain',
   },
 
   /* 05_znak_uproszczony_kolor_biale_tlo 2 */
@@ -88,8 +89,8 @@ export const styles = StyleSheet.create({
     right: '47.15%',
     top: '92.03%',
     bottom: '1.64%',
-    background: { uri: 'react_files\app\images\ministerstwo_cyfryzacji.png' },
-    backgroundSize: 'cover',
+    //background: { uri: 'react_files\app\images\ministerstwo_cyfryzacji.png' },
+    resizeMode: 'contain',
   },
 
   /* wersja 0.1 */
@@ -127,8 +128,8 @@ export const styles = StyleSheet.create({
     right: '63.71%',
     top: '1.25%',
     bottom: '94.22%',
-    background: { uri: 'react_files\app\images\herb_Polski.png' },
-    backgroundSize: 'cover',
+    //background: { uri: 'react_files\app\images\herb_Polski.png' },
+    resizeMode: 'contain',
   },
 
   /* image 1 */
@@ -139,8 +140,8 @@ export const styles = StyleSheet.create({
     right: '36.16%',
     top: '10.47%',
     bottom: '70.39%',
-    background: { uri: 'react_files\app\images\logo.png' },
-    backgroundSize: 'cover',
+    //background: { uri: 'react_files\app\images\logo.png' },
+    resizeMode: 'contain',
     border: '4px solid #000000',
   },
 
