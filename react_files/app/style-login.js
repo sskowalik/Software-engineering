@@ -4,15 +4,8 @@ export const styles = StyleSheet.create({
    /* Mask group */
    maskGroup: {
     position: 'absolute',
-    width: 755,
-    height: 1280,
-  },
-
-  /* Group 3 */
-  group3: {
-    position: 'absolute',
-    width: 755,
-    height: 1280,
+    width: '40%',
+    height: '60%',
   },
 
   /* Rectangle 13 */

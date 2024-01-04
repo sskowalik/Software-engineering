@@ -4,7 +4,7 @@ import { styles } from './style-login';
 const Login = () => {
     return (
         <View style={styles.container}>
-            <View style={styles.maskGroup}>
+                <View style={styles.maskGroup}>
                 <View style={styles.rectangle13}></View>
                 <View style={styles.orzelBialy3}></View>
                 <View style={styles.rectangle14}></View>
