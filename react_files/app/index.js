@@ -28,10 +28,6 @@ const YourComponent = () => {
                 <Text style={styles.forgotPassword}>Nie pamiętasz hasła?</Text>
                 <Text style={styles.register}>Zarejestruj się</Text>
             </View>
-
-            <View style={styles.group3}>
-                {/* Dodaj elementy dla group-3 jeśli są potrzebne */}
-            </View>
         </View>
     );
 };
