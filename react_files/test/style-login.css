@@ -31,7 +31,7 @@
     top: 48.75%;
     bottom: 9.61%;
     margin-left: 20%;
-    background: url(../images/orzel_bialy.png);
+    background: url(../app/images/orzel_bialy.png);
      
 
 }
@@ -73,7 +73,7 @@
     right: 5.3%;
     top: 0.39%;
     bottom: 93.28%;
-    background: url(../images/info.png);
+    background: url(../app/images/info.png);
     background-size: cover; 
 
 }
@@ -85,7 +85,7 @@
     right: 72.45%;
     top: 92.42%;
     bottom: 1.95%;
-    background: url(../images/COI.png);
+    background: url(../app/images/COI.png);
     background-size: cover; 
 
 }
@@ -97,7 +97,7 @@
     right: 47.15%;
     top: 92.03%;
     bottom: 1.64%;
-    background: url(../images/05_znak_uproszczony_kolor_biale_tlo.png);
+    background: url(../app/images/ministerstwo_cyfryzacji.png);
     background-size: cover; 
 
 }
@@ -139,7 +139,7 @@
     right: 63.71%;
     top: 1.25%;
     bottom: 94.22%;
-    background-image: url(../images/Herb_Polski.png);
+    background-image: url(../app/images/herb_Polski.png);
     background-size: cover; 
 
 }
@@ -152,7 +152,7 @@
     right: 36.16%;
     top: 10.47%;
     bottom: 70.39%;
-    background-image: url(../images/image.png);
+    background-image: url(../app/images/logo.png);
     background-size: cover; 
     border: 4px solid #000000;
 }
