@@ -4,11 +4,12 @@ import { styles_login } from './style-container-top-login';
 const Login = () => {
     return (
         <View style={styles_login.container}>
-            <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_login.herbPolski2} />
+            <View style={styles_login.containerTopBar}>
+            <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_login.herbPolski} />
             <Text style={styles_login.urzedasPl}>URZĘDAS.PL</Text>
-            <Image source={require('react_files/app/images/info.png')} style={styles_login.info2} />
-            <View style={styles.line3}></View>
-
+            <Image source={require('react_files/app/images/info.png')} style={styles_login.info} />
+            </View>
+            <View style={styles_login.lineTop}></View>
         </View>
 
 
