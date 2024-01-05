@@ -1,0 +1,330 @@
+/* Mask group */
+.mask-group {
+    position: absolute;
+    width: 755px;
+    height: 1280px;
+}
+
+/* Group 3 */
+.group-3 {
+    position: absolute;
+    width: 755px;
+    height: 1280px;
+}
+
+/* Rectangle 13 */
+.rectangle-13 {
+    position: absolute;
+    left: 0%;
+    right: 4.64%;
+    top: 0%;
+    bottom: 0%;
+    background: #FFFFFF;
+    mix-blend-mode: normal;
+}
+
+/* orzel_bialy 3 */
+.orzel-bialy-3 {
+    position: absolute;
+    left: 10.46%;
+    right: 4.64%;
+    top: 48.75%;
+    bottom: 9.61%;
+    margin-left: 20%;
+    background: url(../images/orzel_bialy.png);
+     
+
+}
+
+/* Rectangle 14 */
+.rectangle-14 {
+    position: absolute;
+    left: 0%;
+    right: 4.64%;
+    top: 90.39%;
+    bottom: 0%;
+    background: #CB3D49;
+}
+
+/* Rectangle 15 */
+.rectangle-15 {
+    position: absolute;
+    left: 0%;
+    right: 4.64%;
+    top: 0%;
+    bottom: 92.97%;
+    background: #F2F2F2;
+}
+
+/* Line 3 */
+.line-3 {
+    position: absolute;
+    left: 0%;
+    right: 4.64%;
+    top: 7.03%;
+    bottom: 92.97%;
+    border: 1px solid #B3B3B3;
+}
+
+/* info 2 */
+.info-2 {
+    position: absolute;
+    left: 83.97%;
+    right: 5.3%;
+    top: 0.39%;
+    bottom: 93.28%;
+    background: url(../images/info.png);
+    background-size: cover; 
+
+}
+
+/* COI 2 */
+.coi-2 {
+    position: absolute;
+    left: 3.31%;
+    right: 72.45%;
+    top: 92.42%;
+    bottom: 1.95%;
+    background: url(../images/COI.png);
+    background-size: cover; 
+
+}
+
+/* 05_znak_uproszczony_kolor_biale_tlo 2 */
+.znak-uproszczony-2 {
+    position: absolute;
+    left: 28.74%;
+    right: 47.15%;
+    top: 92.03%;
+    bottom: 1.64%;
+    background: url(../images/05_znak_uproszczony_kolor_biale_tlo.png);
+    background-size: cover; 
+
+}
+
+/* wersja 0.1 */
+.wersja-01 {
+    position: absolute;
+    left: 73.11%;
+    right: 0%;
+    top: 95.94%;
+    bottom: 0.94%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    color: #D6D6D6;
+}
+
+/* URZĘDAS.PL */
+.urzedas-pl {
+    position: absolute;
+    left: 38.15%;
+    right: 28.74%;
+    top: 1.41%;
+    bottom: 94.45%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    color: #000000;
+}
+
+/* Herb_Polski 2 */
+.herb-polski-2 {
+    position: absolute;
+    left: 29.8%;
+    right: 63.71%;
+    top: 1.25%;
+    bottom: 94.22%;
+    background-image: url(../images/Herb_Polski.png);
+    background-size: cover; 
+
+}
+
+/* image 1 */
+.image-1 {
+    box-sizing: border-box;
+    position: absolute;
+    left: 31.52%;
+    right: 36.16%;
+    top: 10.47%;
+    bottom: 70.39%;
+    background-image: url(../images/image.png);
+    background-size: cover; 
+    border: 4px solid #000000;
+}
+
+/* Rectangle 22 */
+.rectangle-22 {
+    box-sizing: border-box;
+    position: absolute;
+    left: 10.46%;
+    right: 16.03%;
+    top: 34.84%;
+    bottom: 43.52%;
+    border: 3px solid #D6D6D6;
+    border-radius: 40px;
+}
+
+/* Rectangle 23 */
+.rectangle-23 {
+    box-sizing: border-box;
+    position: absolute;
+    left: 15.5%;
+    right: 21.99%;
+    top: 38.83%;
+    bottom: 56.8%;
+    border: 3px solid #D6D6D6;
+    border-radius: 40px;
+}
+
+/* Rectangle 25 */
+.rectangle-25 {
+    box-sizing: border-box;
+    position: absolute;
+    left: 15.5%;
+    right: 21.99%;
+    top: 48.12%;
+    bottom: 47.5%;
+    border: 3px solid #D6D6D6;
+    border-radius: 40px;
+}
+
+/* Rectangle 24 */
+.rectangle-24 {
+    box-sizing: border-box;
+    position: absolute;
+    left: 15.5%;
+    right: 21.99%;
+    top: 38.83%;
+    bottom: 56.8%;
+    border: 3px solid #D6D6D6;
+    border-radius: 40px;
+}
+
+/* LOGOWANIE */
+.logowanie {
+    position: absolute;
+    left: 31.52%;
+    right: 36.03%;
+    top: 31.09%;
+    bottom: 65.16%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    color: #B3B3B3;
+}
+
+/* E-mail */
+.email {
+    position: absolute;
+    left: 18.81%;
+    right: 71.39%;
+    top: 36.56%;
+    bottom: 61.17%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #B3B3B3;
+}
+
+/* Hasło */
+.haslo {
+    position: absolute;
+    left: 18.81%;
+    right: 72.45%;
+    top: 45.86%;
+    bottom: 51.88%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #B3B3B3;
+}
+
+/* Nie posiadasz konta? */
+.no-account {
+    position: absolute;
+    left: 15.5%;
+    right: 51.79%;
+    top: 56.48%;
+    bottom: 41.25%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #B3B3B3;
+}
+
+/* Nie pamiętam hasła */
+.forgot-password {
+    position: absolute;
+    left: 45.7%;
+    right: 24.11%;
+    top: 52.5%;
+    bottom: 45.23%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #656565;
+}
+
+/* Zarejestruj się */
+.register {
+    position: absolute;
+    left: 15.5%;
+    right: 62.52%;
+    top: 58.75%;
+    bottom: 38.98%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #656565;
+}
+/* Rectangle 40 */
+.rectangle-40 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 291px;
+    height: 97px;
+    background: #D6D6D6;
+    border: 3px solid #FFFFFF;
+    text-align: center;
+    border-radius: 40px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+
+    /* Dodaj te właściwości */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ZALOGUJ */
+
+.group5{
+    position: absolute;
+    margin-top: 108%;
+    margin-left: 30%;
+    width: 291px;
+    height: 97px;
+}
+
+
