@@ -5,14 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.6.3</version>
 	</parent>
 	<groupId>com.api</groupId>
 	<artifactId>API</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>API</name>
-	<description>Spring boot api </description>
+	<description>Spring boot api</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -25,19 +24,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.31</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+
 	
+    <dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-ui</artifactId>
+    <version>1.5.12</version> <!-- Użyj najnowszej dostępnej wersji -->
+</dependency>
+
+		
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -45,7 +51,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version> <!-- Lub użyj najnowszej dostępnej wersji -->
+        </plugin>
 		</plugins>
 	</build>
-
 </project>
