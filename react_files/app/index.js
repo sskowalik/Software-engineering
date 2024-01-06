@@ -1,26 +1,43 @@
 import React, {useState} from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { styles_login } from './style-login';
-
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
 
     const [isPressed, setIsPressed] = useState(false);
+    const navigation = useNavigation();
 
-    const handlePress = () => {
+    const loginPress = () => {
         setIsPressed(true);
         setTimeout(() => {
             setIsPressed(false);
         }, 500);
+        navigation.navigate('menu');
         Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
-      };
+    };
+
+    const recoveryPress = () => {
+        navigation.navigate('passwordRecovery');
+        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
+    };
+    
+    const registerPress = () => {
+        navigation.navigate('registration');
+        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
+    };
+
+    const infoPress = () => {
+        navigation.navigate('info');
+        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
+    };
 
     return (
         <View style={styles_login.container}>
             <View style={styles_login.containerTopBar}>
                 <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_login.herbPolski} />
                 <Text style={styles_login.urzedasPl}>URZĘDAS.PL</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={infoPress}>
                     <Image source={require('react_files/app/images/info.png')} style={styles_login.info} />
                 </TouchableOpacity>
             </View>
@@ -32,17 +49,17 @@ const Login = () => {
                 <TextInput style={styles_login.loginField} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3"></TextInput>
                 <Text style={styles_login.loginText}>Hasło</Text>
                 <TextInput style={styles_login.loginField} placeholder="Wprowadź hasło" placeholderTextColor="#B3B3B3" secureTextEntry></TextInput>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={recoveryPress}>
                     <Text style={styles_login.forgotPassword}>Nie pamiętam hasła</Text>
                 </TouchableOpacity>
                 
             </View>
             <ImageBackground source={require('react_files/app/images/orzel_bialy_background.png')} style={styles_login.containerBody}>
                 <Text style={styles_login.noAccount}>Nie posiadasz konta?</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={registerPress}>
                     <Text style={styles_login.register}>Zarejestruj się</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles_login.containerLoginConfirm, isPressed ? styles_login.containerLoginConfirmPressed : null,]} onPress={handlePress}>
+                <TouchableOpacity style={[styles_login.containerLoginConfirm, isPressed ? styles_login.containerLoginConfirmPressed : null,]} onPress={loginPress}>
                     <Text style={[styles_login.loginConfirmText, isPressed ? styles_login.loginConfirmTextPressed : null,]}>ZALOGUJ</Text>
                 </TouchableOpacity>
             </ImageBackground>
