@@ -5,14 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
 
-    const [isPressed, setIsPressed] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigation = useNavigation();
 
     const loginPress = () => {
-        setIsPressed(true);
-        setTimeout(() => {
-            setIsPressed(false);
-        }, 500);
         navigation.navigate('menu');
         Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
@@ -46,9 +43,9 @@ const Login = () => {
             <Text style={styles_login.logowanie}>LOGOWANIE</Text>
             <View style={styles_login.containerLoginWindow}>
                 <Text style={styles_login.loginText}>E-mail</Text>
-                <TextInput style={styles_login.loginField} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3"></TextInput>
+                <TextInput style={styles_login.loginField} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail(text)} value={email}></TextInput>
                 <Text style={styles_login.loginText}>Hasło</Text>
-                <TextInput style={styles_login.loginField} placeholder="Wprowadź hasło" placeholderTextColor="#B3B3B3" secureTextEntry></TextInput>
+                <TextInput style={styles_login.loginField} placeholder="Wprowadź hasło" placeholderTextColor="#B3B3B3" secureTextEntry onChangeText={(text) => setPassword(text)} value={password}></TextInput>
                 <TouchableOpacity onPress={recoveryPress}>
                     <Text style={styles_login.forgotPassword}>Nie pamiętam hasła</Text>
                 </TouchableOpacity>
@@ -59,8 +56,8 @@ const Login = () => {
                 <TouchableOpacity onPress={registerPress}>
                     <Text style={styles_login.register}>Zarejestruj się</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles_login.containerLoginConfirm, isPressed ? styles_login.containerLoginConfirmPressed : null,]} onPress={loginPress}>
-                    <Text style={[styles_login.loginConfirmText, isPressed ? styles_login.loginConfirmTextPressed : null,]}>ZALOGUJ</Text>
+                <TouchableOpacity style={[styles_login.containerLoginConfirm, (email !== '' && password !== '') ? styles_login.containerLoginConfirmPressed : null,]} onPress={loginPress}>
+                    <Text style={[styles_login.loginConfirmText, (email !== '' && password !== '') ? styles_login.loginConfirmTextPressed : null,]}>ZALOGUJ</Text>
                 </TouchableOpacity>
             </ImageBackground>
             <View style={styles_login.containerBottomBar}>

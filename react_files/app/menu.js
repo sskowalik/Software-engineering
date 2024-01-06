@@ -13,7 +13,7 @@ const Menu = () => {
                 <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_login.herbPolski} />
                 <Text style={styles_login.urzedasPl}>URZĘDAS.PL</Text>
                 <TouchableOpacity>
-                    <Image source={require('react_files/app/images/info.png')} style={styles_login.info} />
+                    <Image source={require('react_files/app/images/menu.png')} style={styles_login.info} />
                 </TouchableOpacity>
             </View>
             <View style={styles_login.lineTop}></View>

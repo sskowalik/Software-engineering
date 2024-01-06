@@ -7,12 +7,17 @@ const Registration = () => {
 
     const navigation = useNavigation();
 
+    const infoPress = () => {
+        navigation.navigate('info');
+        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
+    };
+    
     return (
         <View style={styles_login.container}>
             <View style={styles_login.containerTopBar}>
                 <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_login.herbPolski} />
                 <Text style={styles_login.urzedasPl}>URZĘDAS.PL</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={infoPress}>
                     <Image source={require('react_files/app/images/info.png')} style={styles_login.info} />
                 </TouchableOpacity>
             </View>
