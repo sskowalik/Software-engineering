@@ -1,8 +1,20 @@
-package com.api.API.model;
+package com.api.API.model.user;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "user")
+
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int userId;
     private String email;
     private String password;
@@ -113,6 +125,7 @@ public class User {
     }
 
     public User() {
+
     }
 
     public User(int userId, String email, String password, String name, String secondName, String surname,

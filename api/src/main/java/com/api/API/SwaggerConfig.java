@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.models.OpenAPI;
 
 @Configuration
-@OpenAPIDefinition(info = @Info(title = "API", version = "1.0.0"), servers = @Server(url = "http://localhost:8081"))
+@OpenAPIDefinition(info = @Info(title = "API", version = "1.0.0"), servers = @Server(url = "http://localhost:8080"))
 public class SwaggerConfig {
 
     @Bean
