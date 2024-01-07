@@ -14,7 +14,7 @@ export const styles_login = StyleSheet.create({
   herbPolski: {
     width: 51,
     height: 60,
-    marginLeft: '16%',
+    marginLeft: '13%',
     marginTop: '1%',
   },
   urzedasPl: {
@@ -41,7 +41,7 @@ export const styles_login = StyleSheet.create({
   logo: {
     marginLeft: '33%',
     marginTop: '3%',
-    borderWidth: 4,
+    borderWidth: 2,
     borderColor: '#000000',
     width: 130,
     height: 130,
@@ -128,7 +128,7 @@ export const styles_login = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#CB3D49',
-    height: 62,
+    height: 65,
   },  
 
   coi: {
@@ -170,11 +170,11 @@ export const styles_login = StyleSheet.create({
     marginTop: '5%',
     alignItems: 'center',
     borderWidth: 5,
-    borderColor: '#F2F2F2',
+    borderColor: '#CB3D44',
     borderRadius: 40,
     height: 56,
     width: 148,
-    backgroundColor: '#D6D6D6',
+    backgroundColor: '#CB3D49',
   },  
   
   loginConfirmText: {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
+import { View, Text, Image, ImageBackground, TouchableOpacity, ScrollView, Alert, TextInput } from 'react-native';
 import { styles_login } from './style-login';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,7 +16,6 @@ const Login = () => {
 
     const recoveryPress = () => {
         navigation.navigate('passwordRecovery');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
     
     const registerPress = () => {
@@ -30,6 +29,7 @@ const Login = () => {
     };
 
     return (
+        <ScrollView>
         <View style={styles_login.container}>
             <View style={styles_login.containerTopBar}>
                 <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_login.herbPolski} />
@@ -66,6 +66,7 @@ const Login = () => {
                 <Text style={styles_login.versionText}>wersja 0.1</Text>
             </View>
         </View>
+        </ScrollView>
     );
 };
 export default Login;
