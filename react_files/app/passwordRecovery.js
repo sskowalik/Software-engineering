@@ -33,10 +33,10 @@ const PasswordRecovery = () => {
             <View style={styles_passRec.containerPassRecWindow}>
                 <Text style={styles_passRec.recHeader}>Odzyskaj hasło.</Text>
                 <Text style={styles_passRec.recText}>Na podany przez ciebie e-mail wysłane zostanie tymczasowe hasło, które posłuży ci do kolejnego logowania.                                  Hasło możesz następnie zmienić                  w panelu administracyjnym.</Text>
-                <Text style={styles_passRec.recMail1Text}>E-mail</Text>
-                <TextInput style={styles_passRec.recMail1} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail1(text)} value={email1}></TextInput>
-                <Text style={styles_passRec.recMail2Text}>Potwierdź E-mail</Text>
-                <TextInput style={styles_passRec.recMail2} placeholder="Potwierdź adres e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail2(text)} value={email2}></TextInput>
+                <Text style={styles_passRec.recMailText}>E-mail</Text>
+                <TextInput style={styles_passRec.recMail} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail1(text)} value={email1}></TextInput>
+                <Text style={styles_passRec.recMailText}>Potwierdź E-mail</Text>
+                <TextInput style={styles_passRec.recMail} placeholder="Potwierdź adres e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail2(text)} value={email2}></TextInput>
                 <TouchableOpacity style={[styles_passRec.SubmitButton, (email1 !== '' && email2 !== '') ? styles_passRec.SubmitButtonPressed : null,]} onPress={recoverPress}>
                     <Text style={[styles_passRec.SubmitText, (email1 !== '' && email2 !== '') ? styles_passRec.SubmitTextPressed : null,]}>ODZYSKAJ</Text>
                 </TouchableOpacity>

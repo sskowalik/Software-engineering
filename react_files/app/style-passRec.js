@@ -10,7 +10,7 @@ export const styles_passRec = StyleSheet.create({
     
   },
   recHeader: {
-    marginLeft: '8%',
+    marginLeft: '5%',
     marginTop: '10%',
     fontStyle: 'normal',
     fontWeight: '600',
@@ -29,7 +29,7 @@ export const styles_passRec = StyleSheet.create({
     width: 325,
     
   },
-  recMail1Text:{
+  recMailText:{
     marginLeft: '15%',
     marginTop: '10%',
     fontStyle: 'normal',
@@ -39,25 +39,7 @@ export const styles_passRec = StyleSheet.create({
     color: '#B3B3B3',
 
   },
-  recMail2Text:{
-    marginLeft: '15%',
-    marginTop: '5%',
-    fontStyle: 'normal',
-    fontWeight: '600',
-    fontSize: 20,
-    lineHeight: 34,
-    color: '#B3B3B3',
-  },
-  recMail1:{
-    marginLeft: '8%',
-    borderWidth: 3,
-    borderColor: '#D6D6D6',
-    borderRadius: 40,
-    height: 44,
-    width: 310,
-    paddingLeft: 15,
-  },
-  recMail2:{
+  recMail:{
     marginLeft: '8%',
     borderWidth: 3,
     borderColor: '#D6D6D6',
