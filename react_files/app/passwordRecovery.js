@@ -3,15 +3,58 @@ import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, ScrollView
 import { styles_login } from './style-login';
 import { styles_passRec } from './style-passRec';
 import { useNavigation } from '@react-navigation/native';
+import { generateRandomPassword } from './generatePassword';
+import axios from 'axios';
+import { SENDINBLUE_API_KEY } from "@env";
 
 const PasswordRecovery = () => {
     const [email1, setEmail1] = useState('');
     const [email2, setEmail2] = useState('');
 
     const navigation = useNavigation();
-    const recoverPress = () => {
-        navigation.navigate('index');
-        Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu!.');
+
+    const mailApiKey = SENDINBLUE_API_KEY;
+
+    const recoverPress = async () => {
+        const newPassword = generateRandomPassword();
+
+        try {
+            const response = await axios.post(
+                'https://api.sendinblue.com/v3/smtp/email',
+                {
+                    sender: { name: 'Urzędas.pl', email: 'haslo@urzedas.pl' },
+                    to: [{ email: email1 }],
+                    subject: 'Odzyskiwanie hasła w aplikacji Urzędas.pl',
+                    textContent: `Oto Twoje tymczasowe hasło w aplikacji Urzędas.pl: ${newPassword}.\nMożesz je zmienić przy następnym logowaniu się do aplikacji.`,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'api-key': mailApiKey,
+                    },
+                }
+            );
+
+            console.log('E-mail został wysłany:', response.data);
+            navigation.navigate('index');
+            Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu.');
+        } catch (error) {
+            console.error('Błąd podczas wysyłania e-maila:', error);
+
+            if (error.response) {
+                // Błąd z odpowiedzią serwera
+                console.error('Status błędu:', error.response.status);
+                console.error('Dane błędu:', error.response.data);
+            } else if (error.request) {
+                // Błąd bez odpowiedzi
+                console.error('Brak odpowiedzi:', error.request);
+            } else {
+                // Inne błędy
+                console.error('Błąd:', error.message);
+            }
+
+            Alert.alert('Błąd', 'Wystąpił błąd podczas wysyłania e-maila.');
+        }
     };
 
     const infoPress = () => {
