@@ -48,6 +48,12 @@ export const styles_register = StyleSheet.create({
     width: 310,
     paddingLeft: 15,
   },
+  dateText: {
+  fontSize: 16,
+  color: '#000', // Możesz dostosować kolor do swoich preferencji
+  marginTop: '2%',
+  padding: 2,
+},
 //   SubmitButton: {
 //     marginLeft: '31%',
 //     marginTop: '8%',
