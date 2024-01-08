@@ -85,7 +85,24 @@ const Registration = () => {
             />
           )}
           <Text style={styles_register.regFormText}>PESEL</Text>
-          <TextInput style={styles_register.regForm} placeholder="..." keyboardType="numeric" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setPesel(text)} value={pesel}></TextInput>
+          <TextInput
+  style={styles_register.regForm}
+  placeholder="..."
+  keyboardType="numeric"
+  autoCapitalize="none"
+  placeholderTextColor="#B3B3B3"
+  onChangeText={(text) => {
+    // Sprawdzenie, czy wprowadzone znaki są cyframi
+    const numericValue = text.replace(/[^0-9]/g, ''); // Pozostawia tylko cyfry
+
+    // Ograniczenie do 11 znaków
+    const limitedValue = numericValue.substring(0, 11);
+
+    setPesel(limitedValue);
+  }}
+  value={pesel}
+>
+</TextInput>
           <Text style={styles_register.regFormText}>Miejsce urodzenia</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setBirthplace(text)} value={birthplace}></TextInput>
           <Text style={styles_register.regFormText}>Miejsce zameldowania</Text>
