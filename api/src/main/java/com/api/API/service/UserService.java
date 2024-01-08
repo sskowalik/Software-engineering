@@ -1,6 +1,5 @@
 package com.api.API.service;
 
-//import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,26 +40,35 @@ public class UserService {
         if (user.getSurname() == null || user.getSurname().isEmpty()) {
             throw new IllegalArgumentException("Surname cannot be null or empty");
         }
+        if (user.getDate_of_birth() == null) {
+            throw new IllegalArgumentException("Birth date cannot be null or empty");
+        }
+        if (user.getPesel() == null || user.getPesel().length() != 11) {
+            throw new IllegalArgumentException("Pesel cannot be null and must have 11 char");
+        }
+        if (user.getBirthplace() == null || user.getBirthplace().isEmpty()) {
+            throw new IllegalArgumentException("Birthplace cannot be null or empty");
+        }
+        if (user.getDomicile() == null || user.getDomicile().isEmpty()) {
+            throw new IllegalArgumentException("Domicile cannot be null or empty");
+        }
 
         return userRepository.save(user);
     }
 
-    // public User updateUser(int userId, User updatedUser) {
-    // Optional<User> existingUserOptional = userRepository.findById(userId);
+    public User updateUserPassword(int user_id, String newPassword) {
+        Optional<User> existingUserOptional = userRepository.findById(user_id);
 
-    // if (existingUserOptional.isPresent()) {
-    // User existingUser = existingUserOptional.get();
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
 
-    // // Przykładowa logika aktualizacji pól
-    // existingUser.setName(updatedUser.getName());
-    // existingUser.setSurname(updatedUser.getSurname());
-    // // ... inne pola
-
-    // return userRepository.save(existingUser);
-    // } else {
-    // throw new IllegalArgumentException("User with id " + userId + " not found");
-    // }
-    // }
+            // Update the password and save the user
+            existingUser.setPassword(newPassword);
+            return userRepository.save(existingUser);
+        } else {
+            throw new IllegalArgumentException("User with id " + user_id + " not found");
+        }
+    }
 
     public void deleteUser(int user_id) {
         userRepository.deleteById(user_id);

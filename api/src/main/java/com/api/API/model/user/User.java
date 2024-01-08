@@ -22,7 +22,7 @@ public class User {
     private String second_name;
     private String surname;
     private LocalDate date_of_birth;
-    private float pesel;
+    private String pesel;
     private String birthplace;
     private String domicile;
     private String mothers_name;
@@ -84,11 +84,11 @@ public class User {
         this.date_of_birth = date_of_birth;
     }
 
-    public float getPesel() {
+    public String getPesel() {
         return pesel;
     }
 
-    public void setPesel(float pesel) {
+    public void setPesel(String pesel) {
         this.pesel = pesel;
     }
 
@@ -129,7 +129,7 @@ public class User {
     }
 
     public User(int user_id, String email, String password, String name, String second_name, String surname,
-            LocalDate date_of_birth, float pesel, String birthplace, String domicile, String mothers_name,
+            LocalDate date_of_birth, String pesel, String birthplace, String domicile, String mothers_name,
             String fathers_name) {
         this.user_id = user_id;
         this.email = email;

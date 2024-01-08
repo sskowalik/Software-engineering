@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 import com.api.API.model.user.*;
 import com.api.API.service.UserService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/user")
@@ -21,23 +24,43 @@ public class UserController {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
+    @GetMapping("/{user_id}")
+    public ResponseEntity<User> getUserById(@PathVariable("user_id") int user_id) {
+        Optional<User> user = userService.getUserById(user_id);
+        if (user != null) {
+            return new ResponseEntity<>(user.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
-            return new ResponseEntity<>(userService.createUser(user), HttpStatus.OK); // exceptions
-        } catch (IllegalArgumentException a) {
+            return new ResponseEntity<>(userService.createUser(user), HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    // @PutMapping
-    // public String updateUserDetails(@RequestBody User user) {
-    // this.user = user;
-    // return "User Updated Succesfully";
-    // }
 
-    // @DeleteMapping("{userId}")
-    // public String deleteUserDetails(String userId) {
-    // this.user = null;
-    // return "User Deleted Succesfully";
-    // }
+    @PutMapping("{user_id}")
+    public ResponseEntity<User> updateUserPassword(@PathVariable("user_id") int userId,
+            @RequestBody String newPassword) {
+        try {
+            User updatedUser = userService.updateUserPassword(userId, newPassword);
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{user_id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("user_id") int userId) {
+        try {
+            userService.deleteUser(userId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
