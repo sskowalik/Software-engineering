@@ -11,7 +11,7 @@ const PasswordRecovery = () => {
     const navigation = useNavigation();
     const recoverPress = () => {
         navigation.navigate('index');
-        Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu!.');
+        Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu!');
     };
 
     const infoPress = () => {
@@ -37,8 +37,8 @@ const PasswordRecovery = () => {
                 <TextInput style={styles_passRec.recMail} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail1(text)} value={email1}></TextInput>
                 <Text style={styles_passRec.recMailText}>Potwierdź E-mail</Text>
                 <TextInput style={styles_passRec.recMail} placeholder="Potwierdź adres e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail2(text)} value={email2}></TextInput>
-                <TouchableOpacity style={[styles_passRec.SubmitButton, (email1 !== '' && email2 !== '') ? styles_passRec.SubmitButtonPressed : null,]} onPress={recoverPress}>
-                    <Text style={[styles_passRec.SubmitText, (email1 !== '' && email2 !== '') ? styles_passRec.SubmitTextPressed : null,]}>ODZYSKAJ</Text>
+                <TouchableOpacity style={[styles_passRec.SubmitButton, (email1 !== '' && email1==email2) ? styles_passRec.SubmitButtonPressed : null,]} onPress={recoverPress}>
+                    <Text style={[styles_passRec.SubmitText, (email1 !== '' && email1==email2) ? styles_passRec.SubmitTextPressed : null,]}>ODZYSKAJ</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles_login.containerBottomBar}>

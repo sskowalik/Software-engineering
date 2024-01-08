@@ -28,8 +28,14 @@ const Registration = () => {
   const navigation = useNavigation();
   const recoverPress = () => {
     navigation.navigate('index');
-    Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu!.');
+    Alert.alert('Twoje konto zostało utworzone!', 'Zaloguj się i korzystaj ze wszystkich dostępnych funkcji aplikacji!');
   };
+  const isValidEmail = (email) => {
+    // Use a regular expression to validate the email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  
   const infoPress = () => {
     navigation.navigate('info');
     Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
@@ -88,6 +94,9 @@ const Registration = () => {
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setMothersName(text)} value={mothersName}></TextInput>
           <Text style={styles_register.regFormText}>Imię ojca</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setFathersName(text)} value={fathersName}></TextInput>
+          <TouchableOpacity style={[styles_register.SubmitButton, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitButtonPressed : null,]} onPress={recoverPress}>
+                    <Text style={[styles_register.SubmitText, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitTextPressed : null,]}>DOŁĄCZ DO NAS!</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles_login.containerBottomBar}>
           <Image source={require('react_files/app/images/COI.png')} style={styles_login.coi} />

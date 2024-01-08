@@ -20,7 +20,6 @@ const Login = () => {
     
     const registerPress = () => {
         navigation.navigate('registration');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     const infoPress = () => {

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class='use-all-space'>
+<head>
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+    <meta charset='UTF-8'>
+    <title>My Map</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes' />
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/maps/maps.css' />
+</head>
+<body>
+    <div id='map' class='map' style='width:550px; height:40vh'></div>
+    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/maps/maps-web.min.js'></script>
+    <script>
+        tt.setProductInfo('<your-product-name>', '<your-product-version>');
+
+        var map = tt.map({
+            key: 'lWcuDY3wS0gqAc2QAkitBOjgvPLxHQUe',
+            container: 'map',
+            zoom: 11
+        });
+
+        // Pobieranie lokalizacji urządzenia
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var deviceLocation = [position.coords.longitude, position.coords.latitude];
+
+            // Ustawianie centrum mapy na lokalizację urządzenia
+            map.setCenter(deviceLocation);
+        });
+
+        // Funkcja do pobierania lokalizacji z bazy danych
+        function getLocationsFromDatabase() {
+            // Wysyłanie zapytania do serwera
+            fetch('get-locations.php') // Zastąp to odpowiednim adresem URL
+                .then(response => response.json())
+                .then(data => {
+                    // Zdefiniowanie zmiennej locations w zakresie globalnym
+                    var locations = data;
+
+                    // Dodawanie markerów na podstawie danych z bazy danych
+                    data.forEach(function (location, index) {
+                        var marker = new tt.Marker()
+                            .setLngLat([location.longitude, location.latitude])
+                            .addTo(map);
+
+                        var popup = new tt.Popup({ offset: 25 })
+                            .setHTML("<p>" + location.name + "<br>" + location.address + " " + location.postal_code + "<br>tel. " + location.phone_number + "<br>" + location.email + "<br>" + " <button class='chooseBtn' data-index='" + index + "'>Wybierz</button></p>");
+
+                        marker.setPopup(popup);
+
+                        marker.on('click', function (e) {
+                            e.preventDefault();
+                            if (currentPopup && currentPopup.isOpen()) {
+                                currentPopup.remove();
+                            }
+
+                            marker.togglePopup();
+                            currentPopup = marker.getPopup();
+                        });
+
+                        // Przeniesienie nasłuchiwania na poziom globalny
+                        document.addEventListener('click', function (e) {
+                            if (e.target.classList.contains('chooseBtn')) {
+                                e.preventDefault();
+                                e.stopPropagation(); // Zapobiega ponownemu otwarciu popupa
+                                var index = e.target.getAttribute('data-index');
+                                console.log("You chose: " + locations[index].name);
+                            }
+                        });
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Wywołanie funkcji do pobierania lokalizacji z bazy danych
+        getLocationsFromDatabase();
+    </script>
+</body>
+</html>
