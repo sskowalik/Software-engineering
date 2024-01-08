@@ -15,25 +15,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int userId;
+    private int user_id;
     private String email;
     private String password;
     private String name;
-    private String secondName;
+    private String second_name;
     private String surname;
-    private LocalDate dateOfBirth;
-    private int pesel;
+    private LocalDate date_of_birth;
+    private float pesel;
     private String birthplace;
     private String domicile;
-    private String mothersName;
-    private String fathersName;
+    private String mothers_name;
+    private String fathers_name;
 
-    public int getUserId() {
-        return userId;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser_id(int userId) {
+        this.user_id = userId;
     }
 
     public String getEmail() {
@@ -60,12 +60,12 @@ public class User {
         this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSecond_name() {
+        return second_name;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSecond_name(String second_name) {
+        this.second_name = second_name;
     }
 
     public String getSurname() {
@@ -76,19 +76,19 @@ public class User {
         this.surname = surname;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public LocalDate getDate_of_birth() {
+        return date_of_birth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDate_of_birth(LocalDate date_of_birth) {
+        this.date_of_birth = date_of_birth;
     }
 
-    public int getPesel() {
+    public float getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(float pesel) {
         this.pesel = pesel;
     }
 
@@ -108,41 +108,41 @@ public class User {
         this.domicile = domicile;
     }
 
-    public String getMothersName() {
-        return mothersName;
+    public String getMothers_name() {
+        return mothers_name;
     }
 
-    public void setMothersName(String mothersName) {
-        this.mothersName = mothersName;
+    public void setMothers_name(String mothers_name) {
+        this.mothers_name = mothers_name;
     }
 
-    public String getFathersName() {
-        return fathersName;
+    public String getFathers_name() {
+        return fathers_name;
     }
 
-    public void setFathersName(String fathersName) {
-        this.fathersName = fathersName;
+    public void setFathers_name(String fathers_name) {
+        this.fathers_name = fathers_name;
     }
 
     public User() {
 
     }
 
-    public User(int userId, String email, String password, String name, String secondName, String surname,
-            LocalDate dateOfBirth, int pesel, String birthplace, String domicile, String mothersName,
-            String fathersName) {
-        this.userId = userId;
+    public User(int user_id, String email, String password, String name, String second_name, String surname,
+            LocalDate date_of_birth, float pesel, String birthplace, String domicile, String mothers_name,
+            String fathers_name) {
+        this.user_id = user_id;
         this.email = email;
         this.password = password;
         this.name = name;
-        this.secondName = secondName;
+        this.second_name = second_name;
         this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
+        this.date_of_birth = date_of_birth;
         this.pesel = pesel;
         this.birthplace = birthplace;
         this.domicile = domicile;
-        this.mothersName = mothersName;
-        this.fathersName = fathersName;
+        this.mothers_name = mothers_name;
+        this.fathers_name = fathers_name;
     }
 
 }

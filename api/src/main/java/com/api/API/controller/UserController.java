@@ -21,12 +21,14 @@ public class UserController {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    // @PostMapping
-    // public String createUserDetails(@RequestBody User user) {
-    // this.user = user;
-    // return "User Created Succesfully";
-    // }
-
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        try {
+            return new ResponseEntity<>(userService.createUser(user), HttpStatus.OK); // exceptions
+        } catch (IllegalArgumentException a) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
     // @PutMapping
     // public String updateUserDetails(@RequestBody User user) {
     // this.user = user;
