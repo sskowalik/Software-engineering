@@ -49,22 +49,27 @@ const Menu = () => {
             <View style={styles_menu.lineTop}></View>
             <View style={styles_menu.containerBodyTiles}>
                 <TouchableOpacity style={styles_menu.containerBody} onPress={visitPlannerPress}>
-
+                    <Image source={require('react_files/app/images/iconVisitPlanner.png')} style={styles_menu.iconPlanner} />
+                    <Text style={styles_menu.textPlanner}>UMÓW WIZYTĘ</Text>
                 </TouchableOpacity>
                 <View style={styles_menu.containerBodyTiles2}>
                     <TouchableOpacity style={styles_menu.containerBody2} onPress={accountPress}>
-
+                        <Image source={require('react_files/app/images/iconAccount.png')} style={styles_menu.icon} />
+                        <Text style={styles_menu.text}>PROFIL</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles_menu.containerBody2} onPress={visitsPress}>
-
+                        <Image source={require('react_files/app/images/iconVisits.png')} style={styles_menu.icon} />
+                        <Text style={styles_menu.text}>TWOJE WIZYTY</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles_menu.containerBodyTiles2}>
                     <TouchableOpacity style={styles_menu.containerBody2} onPress={officesPress}>
-
+                        <Image source={require('react_files/app/images/iconOffices.png')} style={styles_menu.icon} />
+                        <Text style={styles_menu.text}>URZĘDY</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles_menu.containerBody2} onPress={documentsPress}>
-
+                        <Image source={require('react_files/app/images/iconDocuments.png')} style={styles_menu.icon} />
+                        <Text style={styles_menu.text}>DOKUMENTY</Text>
                     </TouchableOpacity>
                 </View>
             </View>

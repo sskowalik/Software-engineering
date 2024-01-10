@@ -39,7 +39,7 @@ export const styles_menu = StyleSheet.create({
   containerBody: {
     marginLeft: '4%',
     marginTop: '4%',
-    flexDirection: 'flex',
+    flexDirection: 'row',
     borderWidth: 5,
     borderColor: '#D6D6D6',
     height: 180,
@@ -48,7 +48,8 @@ export const styles_menu = StyleSheet.create({
   containerBody2: {
     marginLeft: '4%',
     marginTop: '4%',
-    flexDirection: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     borderWidth: 5,
     borderColor: '#D6D6D6',
     height: 180,
@@ -81,11 +82,44 @@ export const styles_menu = StyleSheet.create({
     marginLeft: '25%',
     marginTop: '6%',
   },
+
   notificationBell: {
     marginLeft: '2%',
     marginTop: '1%',
     width: 50,
     height: 50,
     padding: 0,
+  },
+
+  icon: {
+    marginTop: '4%',
+    width: 80,
+    height: 80,
+    padding: 0,
+  },
+
+  iconPlanner: {
+    marginLeft: '5%',
+    marginTop: '4%',
+    width: 100,
+    height: 100,
+    padding: 0,
+  },
+
+  text: {
+    marginTop: '4%',
+    fontSize: 24,
+    lineHeight: 26,
+    fontWeight: '600',
+    color: '#D6D6D6',
+  },
+  
+  textPlanner: {
+    marginLeft: '20%',
+    marginTop: '4%',
+    fontSize: 34,
+    lineHeight: 36,
+    fontWeight: '600',
+    color: '#D6D6D6',
   },
 });
