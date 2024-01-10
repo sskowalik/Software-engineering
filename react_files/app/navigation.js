@@ -6,6 +6,12 @@ import Menu from './menu';
 import PasswordRecovery from './passwordRecovery';
 import Registration from './registration';
 import Info from './info';
+import Notifications from './notifications';
+import VisitPlanner from './visitPlanner';
+import Account from './account';
+import Visits from './visits';
+import Offices from './offices';
+import Documents from './documents';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +24,12 @@ const Navigation = () => {
         <Stack.Screen name="passwordRecovery" component={PasswordRecovery} />
         <Stack.Screen name="registration" component={Registration} />
         <Stack.Screen name="info" component={Info} />
+        <Stack.Screen name="notifications" component={Notifications} />
+        <Stack.Screen name="visitPlanner" component={VisitPlanner} />
+        <Stack.Screen name="account" component={Account} />
+        <Stack.Screen name="visits" component={Visits} />
+        <Stack.Screen name="offices" component={Offices} />
+        <Stack.Screen name="documents" component={Documents} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -29,4 +29,63 @@ export const styles_menu = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#B3B3B3',
   },
+  containerBodyTiles: {
+    flexDirection: 'column',
+    height: 604,
+  },  
+  containerBodyTiles2: {
+    flexDirection: 'row',
+  },  
+  containerBody: {
+    marginLeft: '4%',
+    marginTop: '4%',
+    flexDirection: 'flex',
+    borderWidth: 5,
+    borderColor: '#D6D6D6',
+    height: 180,
+    width: 360,
+  },
+  containerBody2: {
+    marginLeft: '4%',
+    marginTop: '4%',
+    flexDirection: 'flex',
+    borderWidth: 5,
+    borderColor: '#D6D6D6',
+    height: 180,
+    width: 172,
+  },
+  containerBottomBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#CB3D49',
+    height: 65,
+  },  
+  coi: {
+    width: 76.75,
+    height: 30,
+    marginLeft: '4%',
+  },
+  
+  mc: {
+    width: 97,
+    height: 43.2,
+    marginLeft: '4%',
+  },
+
+  versionText: {
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 18,
+    lineHeight: 20,
+    color: '#D6D6D6',
+    marginLeft: '25%',
+    marginTop: '6%',
+  },
+  notificationBell: {
+    marginLeft: '2%',
+    marginTop: '1%',
+    width: 50,
+    height: 50,
+    padding: 0,
+  },
 });
