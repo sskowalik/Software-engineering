@@ -50,7 +50,10 @@ const Menu = () => {
             <View style={styles_menu.containerBodyTiles}>
                 <TouchableOpacity style={styles_menu.containerBody} onPress={visitPlannerPress}>
                     <Image source={require('react_files/app/images/iconVisitPlanner.png')} style={styles_menu.iconPlanner} />
-                    <Text style={styles_menu.textPlanner}>UMÓW WIZYTĘ</Text>
+                    <View>
+                        <Text style={styles_menu.textPlanner}>UMÓW</Text>
+                        <Text style={styles_menu.textPlanner}>WIZYTĘ</Text>
+                    </View>
                 </TouchableOpacity>
                 <View style={styles_menu.containerBodyTiles2}>
                     <TouchableOpacity style={styles_menu.containerBody2} onPress={accountPress}>

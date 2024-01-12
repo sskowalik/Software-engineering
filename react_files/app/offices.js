@@ -1,24 +1,34 @@
 import React, {useState} from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
-import { styles_info } from './style-info';
-import { styles_login } from './style-login';
+import { styles_menu } from './style-menu';
 import { useNavigation } from '@react-navigation/native';
 
 const Offices = () => {
 
     const navigation = useNavigation();
 
+    const notificationPress = () => {
+        navigation.navigate('notifications');
+        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
+    };
+    
     return (
-        <View style={styles_info.container}>
-            <View style={styles_info.containerTopBar}>
-                <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_info.herbPolski} />
-                <Text style={styles_info.urzedasPl}>URZĘDAS.PL</Text>
+        <View style={styles_menu.container}>
+            <View style={styles_menu.containerTopBar}>
+                <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_menu.herbPolski} />
+                <Text style={styles_menu.urzedasPl}>URZĘDAS.PL</Text>
+                <TouchableOpacity onPress={notificationPress}>
+                    <Image source={require('react_files/app/images/notificationBell.png')} style={styles_menu.notificationBell} />
+                </TouchableOpacity>
             </View>
-            <View style={styles_info.lineTop}></View>
-            <View style={styles_login.containerBottomBar}>
-                <Image source={require('react_files/app/images/COI.png')} style={styles_login.coi} />
-                <Image source={require('react_files/app/images/ministerstwo_cyfryzacji.png')} style={styles_login.mc} />
-                <Text style={styles_login.versionText}>wersja 0.1</Text>
+            <View style={styles_menu.lineTop}></View>
+            <View style={styles_menu.containerBodyTiles}>
+            
+            </View>
+            <View style={styles_menu.containerBottomBar}>
+                <Image source={require('react_files/app/images/COI.png')} style={styles_menu.coi} />
+                <Image source={require('react_files/app/images/ministerstwo_cyfryzacji.png')} style={styles_menu.mc} />
+                <Text style={styles_menu.versionText}>wersja 0.1</Text>
             </View>
         </View>
     );

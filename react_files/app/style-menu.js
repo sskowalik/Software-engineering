@@ -40,6 +40,7 @@ export const styles_menu = StyleSheet.create({
     marginLeft: '4%',
     marginTop: '4%',
     flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 5,
     borderColor: '#D6D6D6',
     height: 180,
@@ -50,6 +51,7 @@ export const styles_menu = StyleSheet.create({
     marginTop: '4%',
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
     borderWidth: 5,
     borderColor: '#D6D6D6',
     height: 180,
@@ -93,16 +95,16 @@ export const styles_menu = StyleSheet.create({
 
   icon: {
     marginTop: '4%',
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     padding: 0,
   },
 
   iconPlanner: {
-    marginLeft: '5%',
+    marginLeft: '4%',
     marginTop: '4%',
-    width: 100,
-    height: 100,
+    width: 140,
+    height: 140,
     padding: 0,
   },
 
@@ -111,15 +113,17 @@ export const styles_menu = StyleSheet.create({
     fontSize: 24,
     lineHeight: 26,
     fontWeight: '600',
-    color: '#D6D6D6',
+    color: '#4D4D4C',
+    textAlign: 'center',
   },
   
   textPlanner: {
-    marginLeft: '20%',
     marginTop: '4%',
+    marginLeft: '10%',
     fontSize: 34,
     lineHeight: 36,
     fontWeight: '600',
-    color: '#D6D6D6',
+    color: '#4D4D4C',
+    textAlign: 'center',
   },
 });
