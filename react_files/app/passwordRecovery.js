@@ -16,7 +16,6 @@ const PasswordRecovery = () => {
 
     const infoPress = () => {
         navigation.navigate('info');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
     
     return (
@@ -31,7 +30,7 @@ const PasswordRecovery = () => {
             </View>
             <View style={styles_login.lineTop}></View>
             <View style={styles_passRec.containerPassRecWindow}>
-                <Text style={styles_passRec.recHeader}>Odzyskaj hasło.</Text>
+                <Text style={styles_passRec.recHeader}>Odzyskaj hasło</Text>
                 <Text style={styles_passRec.recText}>Na podany przez ciebie e-mail wysłane zostanie tymczasowe hasło, które posłuży ci do kolejnego logowania.                                  Hasło możesz następnie zmienić                  w panelu administracyjnym.</Text>
                 <Text style={styles_passRec.recMailText}>E-mail</Text>
                 <TextInput style={styles_passRec.recMail} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail1(text)} value={email1}></TextInput>

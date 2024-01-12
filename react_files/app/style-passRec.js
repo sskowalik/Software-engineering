@@ -10,7 +10,7 @@ export const styles_passRec = StyleSheet.create({
     
   },
   recHeader: {
-    marginLeft: '5%',
+    marginLeft: '16%',
     marginTop: '10%',
     fontStyle: 'normal',
     fontWeight: '600',

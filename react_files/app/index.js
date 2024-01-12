@@ -11,7 +11,6 @@ const Login = () => {
 
     const loginPress = () => {
         navigation.navigate('menu');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     const recoveryPress = () => {
@@ -24,7 +23,6 @@ const Login = () => {
 
     const infoPress = () => {
         navigation.navigate('info');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     return (

@@ -9,32 +9,26 @@ const Menu = () => {
 
     const notificationPress = () => {
         navigation.navigate('notifications');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     const visitPlannerPress = () => {
         navigation.navigate('visitPlanner');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     const accountPress = () => {
         navigation.navigate('account');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     const visitsPress = () => {
         navigation.navigate('visits');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     const officesPress = () => {
         navigation.navigate('offices');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     const documentsPress = () => {
         navigation.navigate('documents');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
 
     return (

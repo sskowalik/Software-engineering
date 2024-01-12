@@ -9,7 +9,6 @@ const Account = () => {
 
     const notificationPress = () => {
         navigation.navigate('notifications');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
     
     return (
