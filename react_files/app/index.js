@@ -1,14 +1,26 @@
-import React, {useState} from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, ScrollView, Alert, TextInput } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { styles_login } from './style-login';
 import { useNavigation } from '@react-navigation/native';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 const Login = () => {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [orientation, setOrientation] = useState(null);
     const navigation = useNavigation();
 
+    useEffect(() => {
+        lockOrientation();
+    }, []);
+    
+    const lockOrientation = async () => {
+        await ScreenOrientation.lockAsync(
+          ScreenOrientation.OrientationLock.PORTRAIT_UP
+        );
+        const o = await ScreenOrientation.getOrientationAsync();
+        setOrientation(o);
+    };
     const loginPress = () => {
         navigation.navigate('menu');
     };
