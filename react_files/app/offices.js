@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { styles_menu } from './style-menu';
+import { styles_offices } from './style-offices';
 import { useNavigation } from '@react-navigation/native';
+import { Picker } from '@react-native-picker/picker';
+import provinceData from './provinces';
+import { getDistrictsForProvince, getCommunesForDistrict, handleProvinceChange, handleDistrictChange,} from './provincesFunctions';
 
 const Offices = () => {
 
@@ -11,6 +15,10 @@ const Offices = () => {
         navigation.navigate('notifications');
     };
     
+    const [selectedProvince, setSelectedProvince] = useState(null);
+    const [selectedDistrict, setSelectedDistrict] = useState(null);
+    const [selectedCommune, setSelectedCommune] = useState(null);
+
     return (
         <View style={styles_menu.container}>
             <View style={styles_menu.containerTopBar}>
@@ -22,7 +30,23 @@ const Offices = () => {
             </View>
             <View style={styles_menu.lineTop}></View>
             <View style={styles_menu.containerBodyTiles}>
-            
+                <Text style={styles_offices.officesHeader}>Wyszukaj informacje o urzędach</Text>
+                <Text style={styles_offices.officesText}>Odnajdź poszukiwany urząd, aby zobaczyć informacje o nim! </Text>
+                <Text style={styles_offices.officesFormText}>Województwo</Text>
+                <Picker selectedValue={selectedProvince} onValueChange={(itemValue) => handleProvinceChange(itemValue, setSelectedProvince, setSelectedDistrict, setSelectedCommune)} style={styles_offices.officesForm}>
+                    <Picker.Item label="Wybierz województwo" value={null} />{Object.keys(provinceData).map((province, index) => (<Picker.Item key={index} label={province} value={province} />))}
+                </Picker>
+                <Text style={styles_offices.officesFormText}>Powiat</Text>
+                <Picker selectedValue={selectedDistrict} onValueChange={(itemValue) => handleDistrictChange(itemValue, setSelectedDistrict, setSelectedCommune)} style={styles_offices.officesForm} enabled={selectedProvince !== null}>
+                    <Picker.Item label="Wybierz powiat" value={null} />{getDistrictsForProvince(selectedProvince, provinceData).map((district, index) => (<Picker.Item key={index} label={district} value={district} />))}
+                </Picker>
+                <Text style={styles_offices.officesFormText}>Gmina</Text>
+                <Picker selectedValue={selectedCommune} onValueChange={(itemValue) => setSelectedCommune(itemValue)} style={styles_offices.officesForm} enabled={selectedDistrict !== null}>
+                    <Picker.Item label="Wybierz gminę" value={null} />{getCommunesForDistrict(selectedProvince, selectedDistrict, provinceData).map((commune, index) => (<Picker.Item key={index} label={commune} value={commune} />))}
+                </Picker>
+                <TouchableOpacity style={[styles_offices.SubmitButton]}>
+                    <Text style={[styles_offices.SubmitText]}>WYSZUKAJ</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles_menu.containerBottomBar}>
                 <Image source={require('react_files/app/images/COI.png')} style={styles_menu.coi} />

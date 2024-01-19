@@ -7,7 +7,6 @@ export const styles_passRec = StyleSheet.create({
   containerPassRecWindow: {
     height:605,
     backgroundColor: '#FFFFFF',
-    
   },
   recHeader: {
     marginLeft: '16%',
