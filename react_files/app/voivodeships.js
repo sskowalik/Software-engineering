@@ -1,4 +1,4 @@
-const provinceData = {
+const voivodeshipData = {
     'Dolnośląskie': {
 
     },
@@ -49,4 +49,4 @@ const provinceData = {
     },      
   };
   
-  export default provinceData;
+  export default voivodeshipData;

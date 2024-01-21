@@ -4,8 +4,8 @@ import { styles_menu } from './style-menu';
 import { styles_visitPlanner } from './style-visitPlanner';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
-import provinceData from './provinces';
-import { getDistrictsForProvince, getCommunesForDistrict, handleProvinceChange, handleDistrictChange,} from './provincesFunctions';
+import voivodeshipData from './voivodeships';
+import { getDistrictsForVoivodeship, getCommunesForDistrict, handleVoivodeshipChange, handleDistrictChange,} from './voivodeshipsFunctions';
 
 const VisitPlanner = () => {
 
@@ -15,7 +15,7 @@ const VisitPlanner = () => {
         navigation.navigate('notifications');
     };
 
-    const [selectedProvince, setSelectedProvince] = useState(null);
+    const [selectedVoivodeship, setSelectedVoivodeship] = useState(null);
     const [selectedDistrict, setSelectedDistrict] = useState(null);
     const [selectedCommune, setSelectedCommune] = useState(null);
     
@@ -32,16 +32,16 @@ const VisitPlanner = () => {
             <View style={styles_menu.containerBodyTiles}>
                 <Text style={styles_visitPlanner.officesHeader}>Wybierz urząd do którego chcesz się udać!</Text>
                 <Text style={styles_visitPlanner.officesFormText}>Województwo</Text>
-                <Picker selectedValue={selectedProvince} onValueChange={(itemValue) => handleProvinceChange(itemValue, setSelectedProvince, setSelectedDistrict, setSelectedCommune)} style={styles_visitPlanner.officesForm}>
-                    <Picker.Item label="Wybierz województwo" value={null} />{Object.keys(provinceData).map((province, index) => (<Picker.Item key={index} label={province} value={province} />))}
+                <Picker selectedValue={selectedVoivodeship} onValueChange={(itemValue) => handleVoivodeshipChange(itemValue, setSelectedVoivodeship, setSelectedDistrict, setSelectedCommune)} style={styles_visitPlanner.officesForm}>
+                    <Picker.Item label="Wybierz województwo" value={null} />{Object.keys(voivodeshipData).map((voivodeship, index) => (<Picker.Item key={index} label={voivodeship} value={voivodeship} />))}
                 </Picker>
                 <Text style={styles_visitPlanner.officesFormText}>Powiat</Text>
-                <Picker selectedValue={selectedDistrict} onValueChange={(itemValue) => handleDistrictChange(itemValue, setSelectedDistrict, setSelectedCommune)} style={styles_visitPlanner.officesForm} enabled={selectedProvince !== null}>
-                     <Picker.Item label="Wybierz powiat" value={null} />{getDistrictsForProvince(selectedProvince, provinceData).map((district, index) => (<Picker.Item key={index} label={district} value={district} />))}
+                <Picker selectedValue={selectedDistrict} onValueChange={(itemValue) => handleDistrictChange(itemValue, setSelectedDistrict, setSelectedCommune)} style={styles_visitPlanner.officesForm} enabled={selectedVoivodeship !== null}>
+                     <Picker.Item label="Wybierz powiat" value={null} />{getDistrictsForVoivodeship(selectedVoivodeship, voivodeshipData).map((district, index) => (<Picker.Item key={index} label={district} value={district} />))}
                 </Picker>
                 <Text style={styles_visitPlanner.officesFormText}>Gmina</Text>
                 <Picker selectedValue={selectedCommune} onValueChange={(itemValue) => setSelectedCommune(itemValue)} style={styles_visitPlanner.officesForm} enabled={selectedDistrict !== null}>
-                    <Picker.Item label="Wybierz gminę" value={null} />{getCommunesForDistrict(selectedProvince, selectedDistrict, provinceData).map((commune, index) => (<Picker.Item key={index} label={commune} value={commune} />))}
+                    <Picker.Item label="Wybierz gminę" value={null} />{getCommunesForDistrict(selectedVoivodeship, selectedDistrict, voivodeshipData).map((commune, index) => (<Picker.Item key={index} label={commune} value={commune} />))}
                 </Picker>
                 <TouchableOpacity style={[styles_visitPlanner.SubmitButton]}>
                     <Text style={[styles_visitPlanner.SubmitText]}>DALEJ</Text>
