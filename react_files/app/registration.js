@@ -38,7 +38,6 @@ const Registration = () => {
   
   const infoPress = () => {
     navigation.navigate('info');
-    Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
   };
 
   return (

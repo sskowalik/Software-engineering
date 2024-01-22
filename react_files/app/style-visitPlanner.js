@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-export const styles_register = StyleSheet.create({
+export const styles_visitPlanner = StyleSheet.create({
   container: {
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
@@ -9,18 +9,18 @@ export const styles_register = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     
   },
-  regHeader: {
+  officesHeader: {
     marginLeft: '8%',
-    marginTop: '10%',
+    marginTop: '6%',
     fontStyle: 'normal',
     fontWeight: '600',
     fontSize: 30,
     color: '#656575',
     width: 400,
   },
-  regText: {
+  officesText: {
     marginLeft: '8%',
-    marginTop: '10%',
+    marginTop: '6%',
     fontStyle: 'normal',
     fontWeight: '600',
     fontSize: 18,
@@ -30,9 +30,9 @@ export const styles_register = StyleSheet.create({
     width: 325,
     
   },
-  regFormText:{
+  officesFormText:{
     marginLeft: '15%',
-    marginTop: '10%',
+    marginTop: '6%',
     fontStyle: 'normal',
     fontWeight: '600',
     fontSize: 20,
@@ -40,21 +40,13 @@ export const styles_register = StyleSheet.create({
     color: '#B3B3B3',
 
   },
-  regForm:{
+  officesForm:{
     marginLeft: '8%',
-    borderWidth: 3,
-    borderColor: '#D6D6D6',
-    borderRadius: 40,
+    backgroundColor: '#F3F3F3',
     height: 44,
     width: 310,
     paddingLeft: 15,
   },
-  dateText: {
-  fontSize: 16,
-  color: '#000', // Możesz dostosować kolor do swoich preferencji
-  marginTop: '2%',
-  padding: 2,
-},
   SubmitButton: {
     marginLeft: '25%',
     marginTop: '8%',
