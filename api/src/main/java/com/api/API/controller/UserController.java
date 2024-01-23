@@ -44,10 +44,10 @@ public class UserController {
     }
 
     @PutMapping("{user_id}")
-    public ResponseEntity<User> updateUserPassword(@PathVariable("user_id") int userId,
-            @RequestBody String newPassword) {
+    public ResponseEntity<User> updateUserPassword(@PathVariable("user_id") int user_id,
+            @RequestBody String new_password) {
         try {
-            User updatedUser = userService.updateUserPassword(userId, newPassword);
+            User updatedUser = userService.updateUserPassword(user_id, new_password);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -55,9 +55,9 @@ public class UserController {
     }
 
     @DeleteMapping("/{user_id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable("user_id") int userId) {
+    public ResponseEntity<Void> deleteUser(@PathVariable("user_id") int user_id) {
         try {
-            userService.deleteUser(userId);
+            userService.deleteUser(user_id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
