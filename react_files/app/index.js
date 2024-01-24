@@ -4,6 +4,8 @@ import { styles_login } from './style-login';
 import { useNavigation } from '@react-navigation/native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
+import axios from './ConfigAxios.ts';
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,8 +23,17 @@ const Login = () => {
         const o = await ScreenOrientation.getOrientationAsync();
         setOrientation(o);
     };
-    const loginPress = () => {
-        navigation.navigate('menu');
+    const loginPress = async () => {
+        // Example of using axios for login
+        axios.post('/login', { email, password })
+          .then(response => {
+              console.log(response.data); // Handle the login success
+              navigation.navigate('menu');
+          })
+          .catch(error => {
+              console.error(error); // Handle login failure
+              // You can also handle different error scenarios based on the error response
+          });
     };
 
     const recoveryPress = () => {

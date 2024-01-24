@@ -10,8 +10,6 @@ import java.util.Optional;
 
 import com.api.API.model.user.*;
 import com.api.API.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/user")
@@ -61,6 +59,30 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginByEmail(
+            @RequestParam String email,
+            @RequestParam String password) {
+        // Validate email and password
+        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            return ResponseEntity.badRequest().body("Email and password are required.");
+        }
+
+        try {
+            // Try to log in
+            boolean loginSuccessful = userService.login(email, password);
+
+            if (loginSuccessful) {
+                return ResponseEntity.ok("Login successful");
+            } else {
+                return ResponseEntity.badRequest().body("Incorrect password");
+            }
+        } catch (IllegalArgumentException e) {
+            // Handle the exception (user not found or incorrect password)
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 }
