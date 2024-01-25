@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
+import { View, Text, Image, ImageBackground, TouchableOpacity, Linking  } from 'react-native';
 import { styles_menu } from './style-menu';
+import { styles_documents } from './style-documents';
 import { useNavigation } from '@react-navigation/native';
 
 const Documents = () => {
@@ -11,6 +12,10 @@ const Documents = () => {
         navigation.navigate('notifications');
     };
     
+    const handleLinkPress = (url) => async () => {
+        await Linking.openURL(url);
+    };
+
     return (
         <View style={styles_menu.container}>
             <View style={styles_menu.containerTopBar}>
@@ -22,7 +27,26 @@ const Documents = () => {
             </View>
             <View style={styles_menu.lineTop}></View>
             <View style={styles_menu.containerBodyTiles}>
-
+            <Text style={styles_documents.documentsHeader}>REJESTRACJA/WYREJESTROWANIE POJAZDU</Text>
+            <TouchableOpacity style={[styles_documents.downloadButton]} onPress={handleLinkPress('https://obywatel.gov.pl/documents/10181/0/wniosek_o_rejestracje-wyrejestrowanie_1.pdf/5593d1d8-5a17-47a8-a78a-9b4f2944b920')}>
+                <Text style={[styles_documents.downloadText]}>POBIERZ WNIOSEK</Text>
+            </TouchableOpacity>
+            <Text style={styles_documents.documentsHeader}>REJESTRACJA/WYREJESTROWANIE POJAZDU</Text>
+            <TouchableOpacity style={[styles_documents.downloadButton]} onPress={handleLinkPress('https://obywatel.gov.pl/documents/10181/0/wniosek_o_rejestracje-wyrejestrowanie_1.pdf/5593d1d8-5a17-47a8-a78a-9b4f2944b920')}>
+                <Text style={[styles_documents.downloadText]}>POBIERZ WNIOSEK</Text>
+            </TouchableOpacity>
+            <Text style={styles_documents.documentsHeader}>REJESTRACJA/WYREJESTROWANIE POJAZDU</Text>
+            <TouchableOpacity style={[styles_documents.downloadButton]} onPress={handleLinkPress('https://obywatel.gov.pl/documents/10181/0/wniosek_o_rejestracje-wyrejestrowanie_1.pdf/5593d1d8-5a17-47a8-a78a-9b4f2944b920')}>
+                <Text style={[styles_documents.downloadText]}>POBIERZ WNIOSEK</Text>
+            </TouchableOpacity>
+            <Text style={styles_documents.documentsHeader}>REJESTRACJA/WYREJESTROWANIE POJAZDU</Text>
+            <TouchableOpacity style={[styles_documents.downloadButton]} onPress={handleLinkPress('https://obywatel.gov.pl/documents/10181/0/wniosek_o_rejestracje-wyrejestrowanie_1.pdf/5593d1d8-5a17-47a8-a78a-9b4f2944b920')}>
+                <Text style={[styles_documents.downloadText]}>POBIERZ WNIOSEK</Text>
+            </TouchableOpacity>
+            <Text style={styles_documents.documentsHeader}>REJESTRACJA/WYREJESTROWANIE POJAZDU</Text>
+            <TouchableOpacity style={[styles_documents.downloadButton]} onPress={handleLinkPress('https://obywatel.gov.pl/documents/10181/0/wniosek_o_rejestracje-wyrejestrowanie_1.pdf/5593d1d8-5a17-47a8-a78a-9b4f2944b920')}>
+                <Text style={[styles_documents.downloadText]}>POBIERZ WNIOSEK</Text>
+            </TouchableOpacity>
             </View>
             <View style={styles_menu.containerBottomBar}>
                 <Image source={require('react_files/app/images/COI.png')} style={styles_menu.coi} />
