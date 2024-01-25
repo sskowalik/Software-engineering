@@ -4,6 +4,8 @@ import { styles_login } from './style-login';
 import { useNavigation } from '@react-navigation/native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
+import axios from './ConfigAxios.ts';
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,8 +24,29 @@ const Login = () => {
         setOrientation(o);
     };
     const loginPress = () => {
-        navigation.navigate('menu');
-    };
+    // Example of using axios for login
+    axios.post('/user/login',{}, {params:{ email, password}})
+        .then(response => {
+            console.log(response.data); // Handle the login success
+            navigation.navigate('menu');
+        })
+        .catch(error => {
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.error('Server responded with error status:', error.response.status);
+                console.error('Error data:', error.response.data);
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.error('No response received from server');
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error('Error occurred while setting up request:', error.message);
+            }
+            
+            // You can also handle different error scenarios based on the error response
+        });
+};
 
     const recoveryPress = () => {
         navigation.navigate('passwordRecovery');
