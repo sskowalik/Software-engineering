@@ -57,7 +57,7 @@ const Login = () => {
     };
 
     const infoPress = () => {
-        navigation.navigate('menu');
+        navigation.navigate('info');
     };
 
     return (
@@ -95,7 +95,7 @@ const Login = () => {
             <View style={styles_login.containerBottomBar}>
                 <Image source={require('react_files/app/images/COI.png')} style={styles_login.coi} />
                 <Image source={require('react_files/app/images/ministerstwo_cyfryzacji.png')} style={styles_login.mc} />
-                <Text style={styles_menu.versionText}>wersja 1.0</Text>
+                <Text style={styles_login.versionText}>wersja 1.0</Text>
             </View>
         </View>
         </ScrollView>
