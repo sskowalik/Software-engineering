@@ -73,4 +73,21 @@ public class UserService {
     public void deleteUser(int user_id) {
         userRepository.deleteById(user_id);
     }
+
+    public boolean login(String email, String password) {
+
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isPresent()) {
+
+            User user = userOptional.get();
+            if (password.equals(user.getPassword())) {
+                return true;
+            } else {
+                throw new IllegalArgumentException("Incorrect password");
+            }
+        } else {
+            throw new IllegalArgumentException("User with email " + email + " not found");
+        }
+    }
 }
