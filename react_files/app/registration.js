@@ -4,7 +4,7 @@ import { styles_login } from './style-login';
 import { styles_register } from './style-register';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-
+import axios from './ConfigAxios.ts';
 const formatDate = (date) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return date.toLocaleDateString(undefined, options);
@@ -26,10 +26,43 @@ const Registration = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const navigation = useNavigation();
-  const recoverPress = () => {
-    navigation.navigate('index');
-    Alert.alert('Twoje konto zostało utworzone!', 'Zaloguj się i korzystaj ze wszystkich dostępnych funkcji aplikacji!');
+  const registerPress = () => {
+    // Sprawdź, czy hasła się zgadzają
+    if (password !== confPassword) {
+      Alert.alert('Błąd', 'Hasła nie są zgodne.');
+      return;
+    }
+
+    // Utwórz obiekt z danymi rejestracji
+    const userData = {
+      email,
+      password,
+      name,
+      secondName,
+      surname,
+      dateOfBirth,
+      pesel:pesel,
+      birthplace,
+      domicile,
+      mothersName,
+      fathersName,
+    };
+
+    // Wyślij żądanie POST z danymi rejestracji
+    axios.post('/user',userData, {headers: {'content-type': 'application/json'}})
+      .then(response => {
+        console.log(response.data);
+        // Obsłuż odpowiedź serwera, np. wyświetl komunikat o sukcesie
+        Alert.alert('Sukces', 'Twoje konto zostało utworzone! Zaloguj się i korzystaj ze wszystkich dostępnych funkcji aplikacji.');
+        navigation.navigate('index'); // Przejdź do innej ścieżki po zarejestrowaniu
+      })
+      .catch(error => {
+        // Obsłuż błędy związane z rejestracją, np. wyświetl błąd serwera
+        console.error('Błąd rejestracji:', error.message);
+        Alert.alert('Błąd rejestracji', 'Wystąpił błąd podczas rejestracji. Spróbuj ponownie później.');
+      });
   };
+  
   const isValidEmail = (email) => {
     // Use a regular expression to validate the email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -110,7 +143,7 @@ const Registration = () => {
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setMothersName(text)} value={mothersName}></TextInput>
           <Text style={styles_register.regFormText}>Imię ojca</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setFathersName(text)} value={fathersName}></TextInput>
-          <TouchableOpacity style={[styles_register.SubmitButton, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitButtonPressed : null,]} onPress={recoverPress}>
+          <TouchableOpacity style={[styles_register.SubmitButton, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitButtonPressed : null,]} onPress={registerPress}>
                     <Text style={[styles_register.SubmitText, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitTextPressed : null,]}>DOŁĄCZ DO NAS!</Text>
           </TouchableOpacity>
         </View>
