@@ -30,6 +30,8 @@ const YourMapComponent = () => {
             <Image source={require('react_files/app/images/info.png')} style={styles_login.info} />
           </TouchableOpacity>
           </View>
+          <View style={styles_login.lineTop}></View>
+
           <View style={styles.containerText}>
                 <Text style={styles.visittext}>Zarezerwuj wizytę w wybranym przez ciebie urzędzie! </Text>
                 <Text style={styles.visittext1}> Kliknij na lokalizację urzędu, do którego </Text>
