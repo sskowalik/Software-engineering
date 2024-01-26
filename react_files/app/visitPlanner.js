@@ -1,46 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView, TextInput,  ImageBackground, Image} from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, ScrollView, TextInput,  ImageBackground, Image} from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
-import { styles_login } from './style-login';
+import { styles_menu } from './style-menu';
+import { styles_map } from './style-map';
 import locationsData from './locations.json'; 
-const infoPress = () => {
-    navigation.navigate('info');
-};
+import { useNavigation } from '@react-navigation/native';
 
-const YourMapComponent = () => {
+const VisitPlanner = () => {
   const [locations, setLocations] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
     setLocations(locationsData);
   }, []);
 
   const handleMarkerPress = (index) => {
-    console.log('You chose:', locations[index].name);
+    console.log('You choose:', locations[index].name);
   };
+
+  const notificationPress = () => {
+    navigation.navigate('notifications');
+};
 
   const screenHeight = Dimensions.get('window').height;
   const halfScreenHeight = screenHeight / 2;
 
   return (
-    <View style={styles.container}>
-        <View style={styles_login.containerTopBar}>
-          <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_login.herbPolski} />
-          <Text style={styles_login.urzedasPl}>URZĘDAS.PL</Text>
-          <TouchableOpacity onPress={infoPress}>
-            <Image source={require('react_files/app/images/info.png')} style={styles_login.info} />
+    <View style={styles_map.container}>
+        <View style={styles_menu.containerTopBar}>
+          <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_menu.herbPolski} />
+          <Text style={styles_menu.urzedasPl}>URZĘDAS.PL</Text>
+          <TouchableOpacity onPress={notificationPress}>
+            <Image source={require('react_files/app/images/notificationBell.png')} style={styles_menu.notificationBell} />
           </TouchableOpacity>
           </View>
-          <View style={styles_login.lineTop}></View>
+          <View style={styles_menu.lineTop}></View>
 
-          <View style={styles.containerText}>
-                <Text style={styles.visittext}>Zarezerwuj wizytę w wybranym przez ciebie urzędzie! </Text>
-                <Text style={styles.visittext1}> Kliknij na lokalizację urzędu, do którego </Text>
-                <Text style={styles.visittext1}> chcesz się zgłosić!</Text>
-
+          <View style={styles_map.containerText}>
+                <Text style={styles_map.visittext}>Zarezerwuj wizytę w wybranym przez ciebie urzędzie! </Text>
+                <Text style={styles_map.visittext1}> Kliknij na lokalizację urzędu, do którego </Text>
+                <Text style={styles_map.visittext1}> chcesz się zgłosić!</Text>
          </View>
 
       <MapView
-        style={{ ...styles.map, height: halfScreenHeight }}
+        style={{ ...styles_map.map, height: halfScreenHeight }}
         initialRegion={{
           latitude: 50.05427094301187,
           longitude: 19.935413510809216,
@@ -57,77 +60,29 @@ const YourMapComponent = () => {
             }}
           >
             <Callout>
-              <View style={styles.calloutContainer}>
-                <Text style={styles.calloutText}>{location.name}</Text>
+              <View style={styles_map.calloutContainer}>
+                <Text style={styles_map.calloutText}>{location.name}</Text>
                 <Text>{location.address} {location.postal_code}</Text>
                 <Text>tel. {location.phone_number}</Text>
                 <Text>{location.email}</Text>
                 <TouchableOpacity
-                  style={styles.chooseButton}
+                  style={styles_map.chooseButton}
                   onPress={() => handleMarkerPress(index)}
                 >
-                  <Text style={styles.chooseButtonText}>Wybierz urząd!</Text>
+                  <Text style={styles_map.chooseButtonText}>Wybierz urząd!</Text>
                 </TouchableOpacity>
               </View>
             </Callout>
           </Marker>
         ))}
       </MapView>
-             <View style={styles_login.containerBottomBar}>
-                <Image source={require('react_files/app/images/COI.png')} style={styles_login.coi} />
-                <Image source={require('react_files/app/images/ministerstwo_cyfryzacji.png')} style={styles_login.mc} />
-                <Text style={styles_login.versionText}>wersja 1.0</Text>
+             <View style={styles_menu.containerBottomBar}>
+                <Image source={require('react_files/app/images/COI.png')} style={styles_menu.coi} />
+                <Image source={require('react_files/app/images/ministerstwo_cyfryzacji.png')} style={styles_menu.mc} />
+                <Text style={styles_menu.versionText}>wersja 1.0</Text>
             </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  containerText:{
-    height:250,
-    backgroundColor: '#FFFFFF',
-  },
-  visittext:{
-    marginTop: '1%',
-    marginLeft: '5%',
-    fontStyle: 'normal',
-    fontWeight: '600',
-    fontSize: 30,
-    lineHeight: 40,
-    color: '#000000',
-  },
-  visittext1:{
-    marginLeft: '5%',
-    marginTop: '3%',
-    fontStyle: 'normal',
-    fontWeight: '600',
-    fontSize: 18,
-    lineHeight: 20,
-    color: '#B3B3B3',
-  },
-  container: {
-    flexDirection: 'column',
-    flex: 1,
-  },
-  map: {
-    flex: 1,
-  },
-  calloutContainer: {
-    width: 200,
-  },
-  calloutText: {
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  chooseButton: {
-    marginTop: 10,
-    backgroundColor: 'red',
-    padding: 10,
-    borderRadius: 5,
-  },
-  chooseButtonText: {
-    color: 'white',
-  },
-});
-
-export default YourMapComponent;
+export default VisitPlanner;

@@ -34,7 +34,7 @@ export const styles_notifications = StyleSheet.create({
     fontWeight: '600',
     fontSize: 24,
     color: '#656575',
-    width: 320,
+    width: 400,
   },
   notificationText: {
     fontStyle: 'normal',
@@ -46,15 +46,14 @@ export const styles_notifications = StyleSheet.create({
   }, 
   notificationText2: {
     fontStyle: 'normal',
-    marginTop: '10%',
-    marginLeft: '36%',
+    marginTop: '16%',
+    marginLeft: '44%',
     fontWeight: '200',
     fontSize: 14,
     lineHeight: 16,
     color: '#B3B3B3',
   }, 
   notificationButton: {
-    marginLeft: '4%',
     marginTop: '8%',
     alignItems: 'center',
     borderWidth: 5,
@@ -64,4 +63,9 @@ export const styles_notifications = StyleSheet.create({
     width: 320,
     backgroundColor: '#F2F2F2',
   }, 
+  containerNotifications: {
+    flexDirection: 'column',
+    height: 604,
+    alignItems: 'center'
+  },  
 });

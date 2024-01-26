@@ -17,10 +17,12 @@ const Notifications = () => {
             <View style={styles_menu.lineTop}></View>
             <View style={styles_menu.containerBodyTiles}>
                 <Text style={styles_notifications.notificationHeader}>NAJNOWSZE POWIADOMIENIA O APLIKACJI!</Text>
-                <TouchableOpacity style={[styles_notifications.notificationButton]}>
-                    <Text style={[styles_notifications.notificationText]}>Już dostępna wersja 1.0!</Text>
-                    <Text style={[styles_notifications.notificationText2]}>25.01.2024</Text>
-                </TouchableOpacity>
+                <View style={styles_notifications.containerNotifications}>
+                    <TouchableOpacity style={[styles_notifications.notificationButton]}>
+                        <Text style={[styles_notifications.notificationText]}>Już dostępna wersja 1.0!</Text>
+                        <Text style={[styles_notifications.notificationText2]}>25.01.2024</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             <View style={styles_menu.containerBottomBar}>
                 <Image source={require('react_files/app/images/COI.png')} style={styles_menu.coi} />
