@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { styles_menu } from './style-menu';
 import { styles_accounts } from './style-account';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import axios from './ConfigAxios.ts';
 
 const Account = () => {
     const route = useRoute();

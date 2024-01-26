@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, Linking  } from 'react-native';
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, Linking  } from 'react-native';
 import { styles_menu } from './style-menu';
 import { styles_documents } from './style-documents';
 import { useNavigation } from '@react-navigation/native';

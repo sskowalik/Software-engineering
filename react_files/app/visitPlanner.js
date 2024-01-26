@@ -39,7 +39,7 @@ const VisitPlanner = () => {
           </View>
           <View style={styles_menu.lineTop}></View>
 
-          <View style={styles_map.containerText}>
+          <View style={styles_map.containerPlannerText}>
                 <Text style={styles_map.visittext}>Zarezerwuj wizytę w wybranym przez ciebie urzędzie! </Text>
                 <Text style={styles_map.visittext1}> Kliknij na lokalizację urzędu, do którego </Text>
                 <Text style={styles_map.visittext1}> chcesz się zgłosić!</Text>

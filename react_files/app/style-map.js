@@ -58,5 +58,9 @@ export const styles_map = StyleSheet.create({
     },
     chooseButtonText:{
       textAlign: 'center',
-    }
+    },
+    containerPlannerText:{
+      height:200,
+      backgroundColor: '#FFFFFF',
+    },
   });

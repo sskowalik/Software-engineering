@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Dimensions, ScrollView, TextInput,  ImageBackground, Image} from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, Image} from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { styles_menu } from './style-menu';
 import { styles_map } from './style-map';

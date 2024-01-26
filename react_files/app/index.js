@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Alert, ImageBackground, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { View, Text, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { styles_login } from './style-login';
 import { useNavigation } from '@react-navigation/native';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -61,7 +61,7 @@ const Login = () => {
     };
 
     const infoPress = () => {
-        navigation.navigate('info');
+        navigation.navigate('notifications');
     };
 
     return (

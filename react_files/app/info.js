@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
+import React from 'react';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { styles_info } from './style-info';
 import { styles_login } from './style-login';
 import { useNavigation } from '@react-navigation/native';
@@ -9,6 +9,7 @@ const Info = () => {
     const navigation = useNavigation();
 
     return (
+        <ScrollView>
         <View style={styles_info.container}>
             <View style={styles_info.containerTopBar}>
                 <Image source={require('react_files/app/images/herb_Polski.png')} style={styles_info.herbPolski} />
@@ -30,6 +31,7 @@ const Info = () => {
                 <Text style={styles_login.versionText}>wersja 1.0</Text>
             </View>
         </View>
+        </ScrollView>
     );
 };
 export default Info;
