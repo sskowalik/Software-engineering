@@ -4,6 +4,7 @@ import { styles_login } from './style-login';
 import { styles_register } from './style-register';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import axios from './ConfigAxios.ts';
 
 const formatDate = (date) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -15,20 +16,48 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [confPassword, setPassword1] = useState('');
   const [name, setName] = useState(null);
-  const [secondName, setSecondName] = useState(null);
+  const [second_name, setsecond_name] = useState(null);
   const [surname, setSurname] = useState(null);
-  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [date_of_birth, setdate_of_birth] = useState(new Date());
   const [pesel, setPesel] = useState(null);
   const [birthplace, setBirthplace] = useState(null);
   const [domicile, setDomicile] = useState(null);
-  const [mothersName, setMothersName] = useState(null);
-  const [fathersName, setFathersName] = useState(null);
+  const [mothers_name, setmothers_name] = useState(null);
+  const [fathers_name, setfathers_name] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const navigation = useNavigation();
-  const recoverPress = () => {
-    navigation.navigate('index');
-    Alert.alert('Twoje konto zostało utworzone!', 'Zaloguj się i korzystaj ze wszystkich dostępnych funkcji aplikacji!');
+  const registerPress = () => {
+    const userData = {
+      email,
+      password,
+      name,
+      second_name,
+      surname,
+      date_of_birth,
+      pesel,
+      birthplace,
+      domicile,
+      mothers_name,
+      fathers_name,
+    };
+
+    if (password !== confPassword) {
+      Alert.alert('Błąd', 'Hasła nie są zgodne.');
+      return;
+    }
+
+    // Wyślij żądanie POST z danymi rejestracji
+    axios.post('/user', userData)
+      .then(response => {
+        console.log(response.data);
+        Alert.alert('Sukces', 'Twoje konto zostało utworzone! Zaloguj się i korzystaj ze wszystkich dostępnych funkcji aplikacji.');
+        navigation.navigate('index'); 
+      })
+      .catch(error => {
+        console.error('Błąd rejestracji:', error.message);
+        Alert.alert('Błąd', 'Wystąpił błąd podczas rejestracji, spróbuj ponownie później!');
+      });
   };
   const isValidEmail = (email) => {
     // Use a regular expression to validate the email format
@@ -63,21 +92,21 @@ const Registration = () => {
           <Text style={styles_register.regFormText}>Imię</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setName(text)} value={name}></TextInput>
           <Text style={styles_register.regFormText}>Drugie imię</Text>
-          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setSecondName(text)} value={secondName}></TextInput>
+          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setsecond_name(text)} value={second_name}></TextInput>
           <Text style={styles_register.regFormText}>Nazwisko</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setSurname(text)} value={surname}></TextInput>
           <Text style={styles_register.regFormText}>Data urodzenia</Text>
           <TouchableOpacity style={styles_register.regForm} onPress={() => setShowDatePicker(true)}>
-            <Text style={styles_register.dateText}>{dateOfBirth ? formatDate(dateOfBirth) : 'Wybierz datę'}</Text>
+            <Text style={styles_register.dateText}>{date_of_birth ? formatDate(date_of_birth) : 'Wybierz datę'}</Text>
           </TouchableOpacity>
           {showDatePicker && (
             <DateTimePicker
               mode="date"
-              value={dateOfBirth}
+              value={date_of_birth}
               onChange={(event, selectedDate) => {
                 setShowDatePicker(false);
-                const currentDate = selectedDate || dateOfBirth;
-                setDateOfBirth(currentDate);
+                const currentDate = selectedDate || date_of_birth;
+                setdate_of_birth(currentDate);
               }}
               onTouchCancel={() => setShowDatePicker(false)}
               onTouchEnd={() => setShowDatePicker(true)}
@@ -107,10 +136,10 @@ const Registration = () => {
           <Text style={styles_register.regFormText}>Miejsce zameldowania</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setDomicile(text)} value={domicile}></TextInput>
           <Text style={styles_register.regFormText}>Imię matki</Text>
-          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setMothersName(text)} value={mothersName}></TextInput>
+          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setmothers_name(text)} value={mothers_name}></TextInput>
           <Text style={styles_register.regFormText}>Imię ojca</Text>
-          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setFathersName(text)} value={fathersName}></TextInput>
-          <TouchableOpacity style={[styles_register.SubmitButton, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitButtonPressed : null,]} onPress={recoverPress}>
+          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setfathers_name(text)} value={fathers_name}></TextInput>
+          <TouchableOpacity style={[styles_register.SubmitButton, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitButtonPressed : null,]} onPress={registerPress}>
                     <Text style={[styles_register.SubmitText, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitTextPressed : null,]}>DOŁĄCZ DO NAS!</Text>
           </TouchableOpacity>
         </View>

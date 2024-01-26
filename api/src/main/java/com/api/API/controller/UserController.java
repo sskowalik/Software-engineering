@@ -41,11 +41,11 @@ public class UserController {
         }
     }
 
-    @PutMapping("{user_id}")
-    public ResponseEntity<User> updateUserPassword(@PathVariable("user_id") int user_id,
+    @PutMapping("/{email}")
+    public ResponseEntity<User> updateUserPassword(@PathVariable("email") String email,
             @RequestBody String new_password) {
         try {
-            User updatedUser = userService.updateUserPassword(user_id, new_password);
+            User updatedUser = userService.updateUserPassword(email, new_password);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
