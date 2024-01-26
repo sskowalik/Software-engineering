@@ -5,7 +5,7 @@ export const styles_map = StyleSheet.create({
       backgroundColor: '#FFFFFF',
     },
     visittext:{
-      marginTop: '1%',
+      marginTop: '5%',
       marginLeft: '5%',
       fontStyle: 'normal',
       fontWeight: '600',
@@ -15,7 +15,7 @@ export const styles_map = StyleSheet.create({
     },
     visittext1:{
       marginLeft: '5%',
-      marginTop: '3%',
+      marginTop: '5%',
       fontStyle: 'normal',
       fontWeight: '600',
       fontSize: 18,
