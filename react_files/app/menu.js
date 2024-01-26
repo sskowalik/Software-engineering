@@ -8,7 +8,7 @@ const Menu = () => {
     const { email } = route.params;
     const [userData, setUserData] = useState(''); // Stan przechowujący dane użytkownika
     const navigation = useNavigation();
-    
+
     useEffect(() => {
         // Pobierz dane użytkownika po montażu komponentu
         fetchData();
@@ -42,7 +42,11 @@ const Menu = () => {
     };
 
     const visitsPress = () => {
-        navigation.navigate('visits');
+        if (userData) {
+            navigation.navigate('visits', { userData });
+        } else {
+            console.error('User data not available yet.');
+        }
     };
 
     const officesPress = () => {

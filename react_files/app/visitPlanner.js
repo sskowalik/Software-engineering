@@ -15,7 +15,7 @@ const VisitPlanner = () => {
   }, []);
 
   const handleMarkerPress = (index) => {
-    Alert.alert('You choose:', locations[index].name);
+    Alert.alert('Wybrałeś urząd:', locations[index].name);
     const name = locations[index].name;
     const office_id = locations[index].office_id;
     navigation.navigate('reservation', { name, office_id });
