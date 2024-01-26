@@ -7,10 +7,23 @@ import axios from './ConfigAxios.ts';
 const PasswordRecovery = () => {
     const [email, setEmail] = useState('');
     const [email2, setEmail2] = useState('');
+
+    function generateRandomPassword() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let password = '';
+        
+        for (let i = 0; i < 12; i++) {
+          const randomIndex = Math.floor(Math.random() * characters.length);
+          password += characters.charAt(randomIndex);
+        }
+        
+        return password;
+      }
+      let new_password = generateRandomPassword();
     const navigation = useNavigation();
+    const mailApiKey = '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';
     
-    const recoverPress2 = async (password) => {
-        const newPassword = password;
+    const recoverPress1 = async () => {
         try {
             const response = await axios.post(
                 'https://api.sendinblue.com/v3/smtp/email',
@@ -18,7 +31,7 @@ const PasswordRecovery = () => {
                     sender: { name: 'Urzędas.pl', email: 'haslo@urzedas.pl' },
                     to: [{ email: email }],
                     subject: 'Odzyskiwanie hasła w aplikacji Urzędas.pl',
-                    textContent: `Oto Twoje tymczasowe hasło w aplikacji Urzędas.pl: ${newPassword}.\nMożesz je zmienić przy następnym logowaniu się do aplikacji.`,
+                    textContent: `Oto Twoje tymczasowe hasło w aplikacji Urzędas.pl: ${new_password}.\nMożesz je zmienić przy następnym logowaniu się do aplikacji.`,
                 },
                 {
                     headers: {
@@ -29,34 +42,31 @@ const PasswordRecovery = () => {
             );
 
             console.log('E-mail został wysłany:', response.data);
+            navigation.navigate('index');
+            Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu.');
         } catch (error) {
             console.error('Błąd podczas wysyłania e-maila:', error);
 
             if (error.response) {
-                // Błąd z odpowiedzią serwera
                 console.error('Status błędu:', error.response.status);
                 console.error('Dane błędu:', error.response.data);
             } else if (error.request) {
-                // Błąd bez odpowiedzi
                 console.error('Brak odpowiedzi:', error.request);
             } else {
-                // Inne błędy
                 console.error('Błąd:', error.message);
             }
+
             Alert.alert('Błąd', 'Wystąpił błąd podczas wysyłania e-maila.');
         }
     };
 
     const recoverPress = () => {
         if (email === email2) {
-            // Generowanie losowego hasła
-            let new_password = generateRandomPassword();
-            // Wykonanie żądania PUT do API, przekazując nowe hasło i ID użytkownika
+
             axios.put(`/user/${email}`, `${new_password}`)
                 .then(response => {console.log(response.new_password)
-                    recoverPress2(new_password);
-                    navigation.navigate('index');
-                    Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu!');
+                    recoverPress1();
+                    navigation.navigate('index', { email: email, newPassword: new_password });
                 })
                 .catch(error => {
                     console.error('Błąd podczas odzyskiwania hasła:', error.message);
