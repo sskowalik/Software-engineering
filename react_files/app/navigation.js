@@ -30,6 +30,7 @@ const Navigation = () => {
         <Stack.Screen name="visits" component={Visits} />
         <Stack.Screen name="offices" component={Offices} />
         <Stack.Screen name="documents" component={Documents} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

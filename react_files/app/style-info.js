@@ -54,6 +54,16 @@ export const styles_info = StyleSheet.create({
     color: '#656565',
     textAlign: 'justify',
     width: 325,
-    
+  },
+  TextName: {
+    marginLeft: '8%',
+    marginTop: '4%',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 18,
+    lineHeight: 20,
+    color: '#B3B3B3',
+    textAlign: 'justify',
+    width: 325,
   },
 });
