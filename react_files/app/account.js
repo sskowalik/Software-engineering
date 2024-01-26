@@ -32,17 +32,17 @@ const Account = () => {
             <View style={styles_menu.containerBodyTiles}>
                     {dataAcc && (
                         <>
-                            <Text style={styles_accounts.text2}>ID użytkownika: <Text style={styles_accounts.text3}>{userData['Data']['user_id']}</Text></Text>
-                            <Text style={styles_accounts.text2}>E-mail: <Text style={styles_accounts.text3}>{userData['Data']['email']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Imię: <Text style={styles_accounts.text3}>{userData['Data']['first_name']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Drugie imię: <Text style={styles_accounts.text3}>{userData['Data']['second_name']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Nazwisko: <Text style={styles_accounts.text3}>{userData['Data']['surname']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Data urodzenia: <Text style={styles_accounts.text3}>{userData['Data']['date_of_birth']}</Text></Text>
-                            <Text style={styles_accounts.text2}>PESEL: <Text style={styles_accounts.text3}>{userData['Data']['pesel']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Miejsce urodzenia: <Text style={styles_accounts.text3}>{userData['Data']['birthplace']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Adres zamieszkania: <Text style={styles_accounts.text3}>{userData['Data']['domicile']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Imię matki: <Text style={styles_accounts.text3}>{dataAcc.userData['Data']['mothers_name']}</Text></Text>
-                            <Text style={styles_accounts.text2}>Imię ojca: <Text style={styles_accounts.text3}>{dataAcc.userData['Data']['fathers_name']}</Text></Text>
+                            <Text style={styles_accounts.text2}>ID użytkownika: <Text style={styles_accounts.text3}>{userData["data"]["user_id"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Email: <Text style={styles_accounts.text3}>{userData["data"]["email"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Imię: <Text style={styles_accounts.text3}>{userData["data"]["name"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Drugie imię: <Text style={styles_accounts.text3}>{userData["data"]["second_name"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Nazwisko: <Text style={styles_accounts.text3}>{userData["data"]["surname"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Data urodzenia: <Text style={styles_accounts.text3}>{userData["data"]["date_of_birth"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>PESEL: <Text style={styles_accounts.text3}>{userData["data"]["pesel"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Miejsce urodzenia: <Text style={styles_accounts.text3}>{userData["data"]["birthplace"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Adres zamieszkania: <Text style={styles_accounts.text3}>{userData["data"]["domicile"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Imię matki: <Text style={styles_accounts.text3}>{userData["data"]["mothers_name"]}</Text></Text>
+                            <Text style={styles_accounts.text2}>Imię ojca: <Text style={styles_accounts.text3}>{userData["data"]["fathers_name"]}</Text></Text>
                         </>
                     )}
                 </View>
