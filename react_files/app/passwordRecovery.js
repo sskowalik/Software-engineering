@@ -3,27 +3,56 @@ import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, ScrollView
 import { styles_login } from './style-login';
 import { styles_passRec } from './style-passRec';
 import { useNavigation } from '@react-navigation/native';
+import { generateRandomPassword } from './generatePassword';
 import axios from './ConfigAxios.ts';
 const PasswordRecovery = () => {
     const [email, setEmail] = useState('');
     const [email2, setEmail2] = useState('');
 
-    function generateRandomPassword() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let password = '';
-        
-        for (let i = 0; i < 12; i++) {
-          const randomIndex = Math.floor(Math.random() * characters.length);
-          password += characters.charAt(randomIndex);
-        }
-        
-        return password;
-      }
     const navigation = useNavigation();
-    const recoverPress = () => {
+
+    const mailApiKey = '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';
+    const recoverPress = async () => {
         if (email === email2) {
             // Generowanie losowego hasła
             let new_password = generateRandomPassword();
+            try {
+                const response = await axios.post(
+                    'https://api.sendinblue.com/v3/smtp/email',
+                    {
+                        sender: { name: 'Urzędas.pl', email: 'haslo@urzedas.pl' },
+                        to: [{ email: email }],
+                        subject: 'Odzyskiwanie hasła w aplikacji Urzędas.pl',
+                        textContent: `Oto Twoje tymczasowe hasło w aplikacji Urzędas.pl: ${new_password}.\nMożesz je zmienić przy następnym logowaniu się do aplikacji.`,
+                    },
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'api-key': mailApiKey,
+                        },
+                    }
+                );
+    
+                console.log('E-mail został wysłany:', response.data);
+                navigation.navigate('index');
+                Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu.');
+            } catch (error) {
+                console.error('Błąd podczas wysyłania e-maila:', error);
+    
+                if (error.response) {
+                    // Błąd z odpowiedzią serwera
+                    console.error('Status błędu:', error.response.status);
+                    console.error('Dane błędu:', error.response.data);
+                } else if (error.request) {
+                    // Błąd bez odpowiedzi
+                    console.error('Brak odpowiedzi:', error.request);
+                } else {
+                    // Inne błędy
+                    console.error('Błąd:', error.message);
+                }
+    
+                Alert.alert('Błąd', 'Wystąpił błąd podczas wysyłania e-maila.');
+            }
             // Wykonanie żądania PUT do API, przekazując nowe hasło i ID użytkownika
             axios.put(`/user/${email}`, `${new_password}`)
                 .then(response => {console.log(response.new_password)
@@ -41,7 +70,6 @@ const PasswordRecovery = () => {
 
     const infoPress = () => {
         navigation.navigate('info');
-        Alert.alert('Przycisk został naciśnięty!', 'Dodatkowa wiadomość.');
     };
     
     return (
@@ -56,7 +84,7 @@ const PasswordRecovery = () => {
             </View>
             <View style={styles_login.lineTop}></View>
             <View style={styles_passRec.containerPassRecWindow}>
-                <Text style={styles_passRec.recHeader}>Odzyskaj hasło.</Text>
+                <Text style={styles_passRec.recHeader}>Odzyskaj hasło</Text>
                 <Text style={styles_passRec.recText}>Na podany przez ciebie e-mail wysłane zostanie tymczasowe hasło, które posłuży ci do kolejnego logowania.                                  Hasło możesz następnie zmienić                  w panelu administracyjnym.</Text>
                 <Text style={styles_passRec.recMailText}>E-mail</Text>
                 <TextInput style={styles_passRec.recMail} placeholder="Wprowadź e-mail" keyboardType="email-address" autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setEmail(text)} value={email}></TextInput>
