@@ -20,7 +20,9 @@ const Info = () => {
                 <Text style={styles_info.Text}>Skontaktuj się z nami! </Text>
                 <Text style={styles_info.Text}>Zapoznaj się z naszą polityką prywatności! </Text>
                 <Text style={styles_info.Text}>Projekt współtworzony przez: </Text>
-
+                <Text style={styles_info.TextName}>Wiktoria Janicka</Text>
+                <Text style={styles_info.TextName}>Sebastian Kowalik</Text>
+                <Text style={styles_info.TextName}>Miłosz Gronowski</Text>
             </View>
             <View style={styles_login.containerBottomBar}>
                 <Image source={require('react_files/app/images/COI.png')} style={styles_login.coi} />
