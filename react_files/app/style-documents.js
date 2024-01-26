@@ -1,9 +1,5 @@
 import { StyleSheet } from 'react-native';
 export const styles_documents = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    backgroundColor: '#FFFFFF',
-  },
   documentsHeader: {
     marginLeft: '4%',
     marginTop: '6%',

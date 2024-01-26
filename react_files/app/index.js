@@ -57,7 +57,7 @@ const Login = () => {
     };
 
     const infoPress = () => {
-        navigation.navigate('menu');
+        navigation.navigate('info');
     };
 
     return (
