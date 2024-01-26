@@ -61,7 +61,7 @@ const Login = () => {
     };
 
     const infoPress = () => {
-        navigation.navigate('notifications');
+        navigation.navigate('info');
     };
 
     return (
