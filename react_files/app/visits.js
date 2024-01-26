@@ -27,7 +27,7 @@ const Visits = () => {
             <View style={styles_menu.containerBottomBar}>
                 <Image source={require('react_files/app/images/COI.png')} style={styles_menu.coi} />
                 <Image source={require('react_files/app/images/ministerstwo_cyfryzacji.png')} style={styles_menu.mc} />
-                <Text style={styles_menu.versionText}>wersja 0.1</Text>
+                <Text style={styles_menu.versionText}>wersja 1.0</Text>
             </View>
         </View>
     );

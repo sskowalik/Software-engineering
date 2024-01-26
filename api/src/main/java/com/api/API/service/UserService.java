@@ -56,17 +56,17 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User updateUserPassword(int user_id, String newPassword) {
-        Optional<User> existingUserOptional = userRepository.findById(user_id);
+    public User updateUserPassword(String email, String new_password) {
+        Optional<User> existingUserOptional = userRepository.findByEmail(email);
 
         if (existingUserOptional.isPresent()) {
             User existingUser = existingUserOptional.get();
 
             // Update the password and save the user
-            existingUser.setPassword(newPassword);
+            existingUser.setPassword(new_password.substring(1, 13));
             return userRepository.save(existingUser);
         } else {
-            throw new IllegalArgumentException("User with id " + user_id + " not found");
+            throw new IllegalArgumentException("User with email" + email + " not found");
         }
     }
 

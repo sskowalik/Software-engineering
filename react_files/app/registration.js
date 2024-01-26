@@ -15,14 +15,14 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [confPassword, setPassword1] = useState('');
   const [name, setName] = useState(null);
-  const [secondName, setSecondName] = useState(null);
+  const [second_name, setsecond_name] = useState(null);
   const [surname, setSurname] = useState(null);
-  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [date_of_birth, setdate_of_birth] = useState(new Date());
   const [pesel, setPesel] = useState(null);
   const [birthplace, setBirthplace] = useState(null);
   const [domicile, setDomicile] = useState(null);
-  const [mothersName, setMothersName] = useState(null);
-  const [fathersName, setFathersName] = useState(null);
+  const [mothers_name, setmothers_name] = useState(null);
+  const [fathers_name, setfathers_name] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const navigation = useNavigation();
@@ -38,14 +38,14 @@ const Registration = () => {
       email,
       password,
       name,
-      secondName,
+      second_name,
       surname,
-      dateOfBirth,
-      pesel:pesel,
+      date_of_birth,
+      pesel,
       birthplace,
       domicile,
-      mothersName,
-      fathersName,
+      mothers_name,
+      fathers_name,
     };
 
     // Wyślij żądanie POST z danymi rejestracji
@@ -96,21 +96,21 @@ const Registration = () => {
           <Text style={styles_register.regFormText}>Imię</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setName(text)} value={name}></TextInput>
           <Text style={styles_register.regFormText}>Drugie imię</Text>
-          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setSecondName(text)} value={secondName}></TextInput>
+          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setsecond_name(text)} value={second_name}></TextInput>
           <Text style={styles_register.regFormText}>Nazwisko</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setSurname(text)} value={surname}></TextInput>
           <Text style={styles_register.regFormText}>Data urodzenia</Text>
           <TouchableOpacity style={styles_register.regForm} onPress={() => setShowDatePicker(true)}>
-            <Text style={styles_register.dateText}>{dateOfBirth ? formatDate(dateOfBirth) : 'Wybierz datę'}</Text>
+            <Text style={styles_register.dateText}>{date_of_birth ? formatDate(date_of_birth) : 'Wybierz datę'}</Text>
           </TouchableOpacity>
           {showDatePicker && (
             <DateTimePicker
               mode="date"
-              value={dateOfBirth}
+              value={date_of_birth}
               onChange={(event, selectedDate) => {
                 setShowDatePicker(false);
-                const currentDate = selectedDate || dateOfBirth;
-                setDateOfBirth(currentDate);
+                const currentDate = selectedDate || date_of_birth;
+                setdate_of_birth(currentDate);
               }}
               onTouchCancel={() => setShowDatePicker(false)}
               onTouchEnd={() => setShowDatePicker(true)}
@@ -140,9 +140,9 @@ const Registration = () => {
           <Text style={styles_register.regFormText}>Miejsce zameldowania</Text>
           <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setDomicile(text)} value={domicile}></TextInput>
           <Text style={styles_register.regFormText}>Imię matki</Text>
-          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setMothersName(text)} value={mothersName}></TextInput>
+          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setmothers_name(text)} value={mothers_name}></TextInput>
           <Text style={styles_register.regFormText}>Imię ojca</Text>
-          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setFathersName(text)} value={fathersName}></TextInput>
+          <TextInput style={styles_register.regForm} placeholder="..." autoCapitalize="none" placeholderTextColor="#B3B3B3" onChangeText={(text) => setfathers_name(text)} value={fathers_name}></TextInput>
           <TouchableOpacity style={[styles_register.SubmitButton, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitButtonPressed : null,]} onPress={registerPress}>
                     <Text style={[styles_register.SubmitText, (isValidEmail(email) !== '' && password !== '' && password===confPassword) ? styles_register.SubmitTextPressed : null,]}>DOŁĄCZ DO NAS!</Text>
           </TouchableOpacity>
