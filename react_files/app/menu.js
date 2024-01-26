@@ -1,11 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { styles_menu } from './style-menu';
-import { useNavigation } from '@react-navigation/native';
-
+import { useNavigation,useRoute } from '@react-navigation/native';
+import axios from './ConfigAxios.ts';
 const Menu = () => {
-
+    const route = useRoute();
+    const { email } = route.params;
+    const [userData, setUserData] = useState(''); // Stan przechowujący dane użytkownika
     const navigation = useNavigation();
+    
+    useEffect(() => {
+        // Pobierz dane użytkownika po montażu komponentu
+        fetchData();
+    }, []);
+   
+    const fetchData =async () => {
+        try {
+            const response = await axios.get(`/user/email/${email}`); // Zakładając, że '/user' to ścieżka do pobrania danych użytkownika
+            //Alert.alert(email);
+            //Alert.alert(JSON.stringify(response));
+            setUserData(response); // Ustaw dane użytkownika w stanie
+        } catch (error) {
+            console.error('Error fetching user data:', error.message);
+        }
+    };
 
     const notificationPress = () => {
         navigation.navigate('notifications');
@@ -16,7 +34,12 @@ const Menu = () => {
     };
 
     const accountPress = () => {
-        navigation.navigate('account');
+        if (userData) {
+            navigation.navigate('account', { userData });
+        } else {
+            console.error('User data not available yet.');
+            // Handle the case when user data is not available yet
+        }
     };
 
     const visitsPress = () => {

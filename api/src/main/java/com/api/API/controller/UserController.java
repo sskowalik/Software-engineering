@@ -22,6 +22,17 @@ public class UserController {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email) {
+        Optional<User> user = userService.getUserByEmail(email);
+        if (user != null) {
+            return new ResponseEntity<>(user.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
     @GetMapping("/{user_id}")
     public ResponseEntity<User> getUserById(@PathVariable("user_id") int user_id) {
         Optional<User> user = userService.getUserById(user_id);
