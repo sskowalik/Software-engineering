@@ -32,10 +32,6 @@ const PasswordRecovery = () => {
                         },
                     }
                 );
-    
-                console.log('E-mail został wysłany:', response.data);
-                navigation.navigate('index');
-                Alert.alert('Tymczasowe hasło zostało wysłane!', 'Sprawdź swojego maila i koniecznie zmień hasło przy następnym logowaniu.');
             } catch (error) {
                 console.error('Błąd podczas wysyłania e-maila:', error);
     
