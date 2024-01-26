@@ -1,3 +1,5 @@
+
+
 import { StyleSheet } from 'react-native';
 export const styles_accounts = StyleSheet.create({
   text2:{
@@ -18,5 +20,7 @@ export const styles_accounts = StyleSheet.create({
     lineHeight: 22,
     color: '#656575',
   },
-
+  visitContainer: {
+    marginBottom: '15',
+  },  
 });

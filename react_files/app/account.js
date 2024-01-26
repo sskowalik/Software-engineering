@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 const Account = () => {
     const route = useRoute();
-    const { userData } = route.params;
+    const { userData, email } = route.params;
     const [dataAcc, setdataAcc] = useState(null); // Stan przechowujący dane użytkownika
     
     useEffect(() => {

@@ -4,11 +4,18 @@ import MapView, { Marker, Callout } from 'react-native-maps';
 import { styles_menu } from './style-menu';
 import { styles_map } from './style-map';
 import locationsData from './locations.json'; 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const VisitPlanner = () => {
   const [locations, setLocations] = useState([]);
   const navigation = useNavigation();
+  const route = useRoute();
+  const { userData, email} = route.params;
+  const [dataAcc, setdataAcc] = useState(null); // Stan przechowujący dane użytkownika
+  
+  useEffect(() => {
+      setdataAcc(JSON.stringify(userData["data"]["user_id"]));
+  }, [userData]);
 
   useEffect(() => {
     setLocations(locationsData);
@@ -18,7 +25,7 @@ const VisitPlanner = () => {
     Alert.alert('Wybrałeś urząd:', locations[index].name);
     const name = locations[index].name;
     const office_id = locations[index].office_id;
-    navigation.navigate('reservation', { name, office_id });
+    navigation.navigate('reservation', { name, office_id, dataAcc, email });
   };
 
   const notificationPress = () => {

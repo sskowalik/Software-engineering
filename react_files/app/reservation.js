@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, StyleSheet, Alert } from 'react-native';
 import { styles_menu } from './style-menu';
 import { styles_map } from './style-map';
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import axios from './ConfigAxios.ts';
 
 const Reservation = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [visitDate, setVisitDate] = useState(new Date());
-  const [selectedHour, setSelectedHour] = useState('08:00');
+  const [visit_date, setvisit_date] = useState(new Date());
+  const [visit_time, setvisit_time] = useState('08:00');
   const [showDatePicker, setShowDatePicker] = useState(false);
-  
+  const [user_id, setuser_id]=useState();
+  const [additional_notes]=useState("Rezerwacja przyjęta!");
+  const [created_at, setcreated_at]= useState(new Date());
   const navigation = useNavigation();
   const route = useRoute();
-  const { name, office_id } = route.params;
-
+  const { name, office_id, dataAcc, email} = route.params;
   const notificationPress = () => {
     navigation.navigate('notifications');
   };
@@ -31,14 +33,31 @@ const Reservation = () => {
     return items;
   };
 
-  const reserveAppointment = () => {
-    // Tutaj dodaj logikę rezerwacji wizyty
-    console.log('Rezerwacja wizyty: ', {
+  const reserveAppointment =  async() => {
+    setuser_id(dataAcc);
+    setcreated_at(new Date());
+    const userData={
+      user_id: parseInt(dataAcc),
       office_id,
-      selectedDate,
-      selectedHour,
-    });
+      visit_date,
+      visit_time,
+      additional_notes,
+      created_at,
+    };
+    await axios.post('/visit', userData)
+      .then(response => {
+        console.log(response.data);
+        // Obsłuż odpowiedź serwera, np. wyświetl komunikat o sukcesie
+        Alert.alert('Sukces', 'Rezerwacja została przyjęta!');
+        navigation.navigate('menu', {email}); // Przejdź do innej ścieżki po zarejestrowaniu
+      })
+      .catch(error => {
+        // Obsłuż błędy związane z rejestracją, np. wyświetl błąd serwera
+        console.error('Błąd rejestracji:', error.message);
+        Alert.alert('Błąd rejestracji', 'Wystąpił błąd podczas rezerwacji. Spróbuj ponownie później.');
+      });
   };
+   
 
   return (
     <ScrollView>
@@ -63,17 +82,17 @@ const Reservation = () => {
           style={styles.datePickerButton}
           onPress={() => setShowDatePicker(true)}
         >
-          <Text style={styles.datePickerButtonText}>{visitDate.toLocaleDateString()}</Text>
+          <Text style={styles.datePickerButtonText}>{visit_date.toLocaleDateString()}</Text>
         </TouchableOpacity>
         {showDatePicker && (
           <DateTimePicker
-            value={visitDate}
+            value={visit_date}
             mode="date"
             display="calendar"
             onChange={(event, selectedDate) => {
               setShowDatePicker(false);
               if (selectedDate) {
-                setVisitDate(selectedDate);
+                setvisit_date(selectedDate);
               }
             }}
           />
@@ -81,8 +100,8 @@ const Reservation = () => {
         <Text style={styles_map.visittext1}>Wybierz godzinę: </Text>
         <Picker
           style={styles.picker}
-          selectedValue={selectedHour}
-          onValueChange={(itemValue) => setSelectedHour(itemValue)}
+          selectedValue={visit_time}
+          onValueChange={(itemValue) => setvisit_time(itemValue)}
         >
           {generatePickerItems()}
         </Picker>

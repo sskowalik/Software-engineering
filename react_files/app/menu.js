@@ -14,11 +14,9 @@ const Menu = () => {
         fetchData();
     }, []);
    
-    const fetchData =async () => {
+    const fetchData = async () => {
         try {
             const response = await axios.get(`/user/email/${email}`); // Zakładając, że '/user' to ścieżka do pobrania danych użytkownika
-            //Alert.alert(email);
-            //Alert.alert(JSON.stringify(response));
             setUserData(response); // Ustaw dane użytkownika w stanie
         } catch (error) {
             console.error('Error fetching user data:', error.message);
@@ -30,12 +28,15 @@ const Menu = () => {
     };
 
     const visitPlannerPress = () => {
-        navigation.navigate('visitPlanner');
-    };
+        if (userData) {
+            navigation.navigate('visitPlanner', { userData, email });
+        } else {
+            console.error('User data not available yet.');
+        }    };
 
     const accountPress = () => {
         if (userData) {
-            navigation.navigate('account', { userData });
+            navigation.navigate('account', { userData, email });
         } else {
             console.error('User data not available yet.');
         }
@@ -43,7 +44,7 @@ const Menu = () => {
 
     const visitsPress = () => {
         if (userData) {
-            navigation.navigate('visits', { userData });
+            navigation.navigate('visits', { userData, email});
         } else {
             console.error('User data not available yet.');
         }
