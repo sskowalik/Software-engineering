@@ -8,6 +8,9 @@ const Menu = () => {
     const { email } = route.params;
     const [userData, setUserData] = useState(''); // Stan przechowujący dane użytkownika
     const navigation = useNavigation();
+    const [user_id, setUser_id] = useState(null); // Stan przechowujący dane użytkownika
+    
+    
     
     useEffect(() => {
         // Pobierz dane użytkownika po montażu komponentu
@@ -20,9 +23,11 @@ const Menu = () => {
             //Alert.alert(email);
             //Alert.alert(JSON.stringify(response));
             setUserData(response); // Ustaw dane użytkownika w stanie
+            
         } catch (error) {
             console.error('Error fetching user data:', error.message);
         }
+
     };
 
     const notificationPress = () => {
@@ -42,9 +47,12 @@ const Menu = () => {
         }
     };
 
-    const visitsPress = () => {
-        navigation.navigate('visits');
-    };
+    const visitsPress = async () => {
+       Alert.alert(user_id);
+            navigation.navigate('visits', { userData });
+       
+        };
+    
 
     const officesPress = () => {
         navigation.navigate('offices');
