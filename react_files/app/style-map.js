@@ -21,6 +21,7 @@ export const styles_map = StyleSheet.create({
       fontSize: 18,
       lineHeight: 20,
       color: '#B3B3B3',
+      textAlign: 'center',
     },
     visittext2:{
         marginTop: '20%',
@@ -30,6 +31,7 @@ export const styles_map = StyleSheet.create({
         fontSize: 30,
         lineHeight: 40,
         color: '#000000',
+        textAlign: 'center',
       },
     container: {
       flexDirection: 'column',
@@ -54,4 +56,7 @@ export const styles_map = StyleSheet.create({
     chooseButtonText: {
       color: 'white',
     },
+    chooseButtonText:{
+      textAlign: 'center',
+    }
   });

@@ -38,7 +38,6 @@ const Menu = () => {
             navigation.navigate('account', { userData });
         } else {
             console.error('User data not available yet.');
-            // Handle the case when user data is not available yet
         }
     };
 

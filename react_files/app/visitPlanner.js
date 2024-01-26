@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Dimensions, ScrollView, TextInput,  ImageBackground, Image} from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, Alert, ScrollView, TextInput,  ImageBackground, Image} from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { styles_menu } from './style-menu';
 import { styles_map } from './style-map';
@@ -15,7 +15,10 @@ const VisitPlanner = () => {
   }, []);
 
   const handleMarkerPress = (index) => {
-    console.log('You choose:', locations[index].name);
+    Alert.alert('You choose:', locations[index].name);
+    const name = locations[index].name;
+    const office_id = locations[index].office_id;
+    navigation.navigate('reservation', { name, office_id });
   };
 
   const notificationPress = () => {
@@ -59,7 +62,7 @@ const VisitPlanner = () => {
               longitude: parseFloat(location.longitude),
             }}
           >
-            <Callout>
+            <Callout onPress={() => handleMarkerPress(index)}>
               <View style={styles_map.calloutContainer}>
                 <Text style={styles_map.calloutText}>{location.name}</Text>
                 <Text>{location.address} {location.postal_code}</Text>
