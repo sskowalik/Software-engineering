@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { View, Text, Image,Alert, ImageBackground, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { styles_login } from './style-login';
 import { useNavigation } from '@react-navigation/native';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -11,6 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [orientation, setOrientation] = useState(null);
     const navigation = useNavigation();
+
 
     useEffect(() => {
         lockOrientation();
@@ -27,8 +28,11 @@ const Login = () => {
     // Example of using axios for login
     axios.post('/user/login',{}, {params:{ email, password}})
         .then(response => {
-            console.log(response.data); // Handle the login success
-            navigation.navigate('menu');
+            
+            const user = response.data;
+            console.log(user); 
+            navigation.navigate('menu',{email});
+
         })
         .catch(error => {
             if (error.response) {
