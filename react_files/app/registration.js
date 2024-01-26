@@ -5,7 +5,6 @@ import { styles_register } from './style-register';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import axios from './ConfigAxios.ts';
-
 const formatDate = (date) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return date.toLocaleDateString(undefined, options);
@@ -28,6 +27,13 @@ const Registration = () => {
 
   const navigation = useNavigation();
   const registerPress = () => {
+    // Sprawdź, czy hasła się zgadzają
+    if (password !== confPassword) {
+      Alert.alert('Błąd', 'Hasła nie są zgodne.');
+      return;
+    }
+
+    // Utwórz obiekt z danymi rejestracji
     const userData = {
       email,
       password,
@@ -42,23 +48,21 @@ const Registration = () => {
       fathers_name,
     };
 
-    if (password !== confPassword) {
-      Alert.alert('Błąd', 'Hasła nie są zgodne.');
-      return;
-    }
-
     // Wyślij żądanie POST z danymi rejestracji
-    axios.post('/user', userData)
+    axios.post('/user',userData, {headers: {'content-type': 'application/json'}})
       .then(response => {
         console.log(response.data);
+        // Obsłuż odpowiedź serwera, np. wyświetl komunikat o sukcesie
         Alert.alert('Sukces', 'Twoje konto zostało utworzone! Zaloguj się i korzystaj ze wszystkich dostępnych funkcji aplikacji.');
-        navigation.navigate('index'); 
+        navigation.navigate('index'); // Przejdź do innej ścieżki po zarejestrowaniu
       })
       .catch(error => {
+        // Obsłuż błędy związane z rejestracją, np. wyświetl błąd serwera
         console.error('Błąd rejestracji:', error.message);
-        Alert.alert('Błąd', 'Wystąpił błąd podczas rejestracji, spróbuj ponownie później!');
+        Alert.alert('Błąd rejestracji', 'Wystąpił błąd podczas rejestracji. Spróbuj ponownie później.');
       });
   };
+  
   const isValidEmail = (email) => {
     // Use a regular expression to validate the email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -146,7 +150,7 @@ const Registration = () => {
         <View style={styles_login.containerBottomBar}>
           <Image source={require('react_files/app/images/COI.png')} style={styles_login.coi} />
           <Image source={require('react_files/app/images/ministerstwo_cyfryzacji.png')} style={styles_login.mc} />
-          <Text style={styles_login.versionText}>wersja 1.0</Text>
+          <Text style={styles_login.versionText}>wersja 0.1</Text>
         </View>
       </View>
     </ScrollView>

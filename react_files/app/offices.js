@@ -14,9 +14,6 @@ const Offices = () => {
         setLocations(locationsData);
     }, []);
 
-    const handleMarkerPress = (index) => {
-        console.log('You choose:', locations[index].name);
-    };
 
     const notificationPress = () => {
         navigation.navigate('notifications');
@@ -65,7 +62,6 @@ const Offices = () => {
                 <Text>{location.email}</Text>
                 <TouchableOpacity
                   style={styles_map.chooseButton}
-                  onPress={() => handleMarkerPress(index)}
                 >
                 </TouchableOpacity>
               </View>

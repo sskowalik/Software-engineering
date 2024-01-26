@@ -12,6 +12,8 @@ import Account from './account';
 import Visits from './visits';
 import Offices from './offices';
 import Documents from './documents';
+import Reservation from './reservation';
+
 
 const Stack = createStackNavigator();
 
@@ -30,6 +32,8 @@ const Navigation = () => {
         <Stack.Screen name="visits" component={Visits} />
         <Stack.Screen name="offices" component={Offices} />
         <Stack.Screen name="documents" component={Documents} />
+        <Stack.Screen name="reservation" component={Reservation} />
+
 
       </Stack.Navigator>
     </NavigationContainer>
